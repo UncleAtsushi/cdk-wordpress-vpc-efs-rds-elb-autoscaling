@@ -1,0 +1,20 @@
+{
+  "version": "20.0.0",
+  "files": {
+    "74e94fd7642b9c11bc65128d6faff2c6354164e0f83b4a0eedb1b8dc9207bf67": {
+      "source": {
+        "path": "WordpressStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "738452829225-ap-northeast-1": {
+          "bucketName": "cdk-hnb659fds-assets-738452829225-ap-northeast-1",
+          "objectKey": "74e94fd7642b9c11bc65128d6faff2c6354164e0f83b4a0eedb1b8dc9207bf67.json",
+          "region": "ap-northeast-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-file-publishing-role-738452829225-ap-northeast-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

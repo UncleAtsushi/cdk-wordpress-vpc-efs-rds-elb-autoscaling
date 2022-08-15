@@ -1,0 +1,529 @@
+{
+ "Resources": {
+  "Vpc8378EB38": {
+   "Type": "AWS::EC2::VPC",
+   "Properties": {
+    "CidrBlock": "10.0.0.0/16",
+    "EnableDnsHostnames": true,
+    "EnableDnsSupport": true,
+    "InstanceTenancy": "default",
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "wp-dev-vpc"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/Resource"
+   }
+  },
+  "VpcwpdevpublicSubnet1SubnetB4CF9076": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    },
+    "AvailabilityZone": "ap-northeast-1a",
+    "CidrBlock": "10.0.0.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "wp-dev-public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "NetworkSecurity/Vpc/wp-dev-publicSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/wp-dev-publicSubnet1/Subnet"
+   }
+  },
+  "VpcwpdevpublicSubnet1RouteTableD48E163D": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "NetworkSecurity/Vpc/wp-dev-publicSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/wp-dev-publicSubnet1/RouteTable"
+   }
+  },
+  "VpcwpdevpublicSubnet1RouteTableAssociation917495B8": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VpcwpdevpublicSubnet1RouteTableD48E163D"
+    },
+    "SubnetId": {
+     "Ref": "VpcwpdevpublicSubnet1SubnetB4CF9076"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/wp-dev-publicSubnet1/RouteTableAssociation"
+   }
+  },
+  "VpcwpdevpublicSubnet1DefaultRoute67422DDC": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VpcwpdevpublicSubnet1RouteTableD48E163D"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "VpcIGWD7BA715C"
+    }
+   },
+   "DependsOn": [
+    "VpcVPCGWBF912B6E"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/wp-dev-publicSubnet1/DefaultRoute"
+   }
+  },
+  "VpcwpdevpublicSubnet2SubnetF5D8106F": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    },
+    "AvailabilityZone": "ap-northeast-1c",
+    "CidrBlock": "10.0.1.0/24",
+    "MapPublicIpOnLaunch": true,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "wp-dev-public"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Public"
+     },
+     {
+      "Key": "Name",
+      "Value": "NetworkSecurity/Vpc/wp-dev-publicSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/wp-dev-publicSubnet2/Subnet"
+   }
+  },
+  "VpcwpdevpublicSubnet2RouteTableB29AC44D": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "NetworkSecurity/Vpc/wp-dev-publicSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/wp-dev-publicSubnet2/RouteTable"
+   }
+  },
+  "VpcwpdevpublicSubnet2RouteTableAssociationCABB46F6": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VpcwpdevpublicSubnet2RouteTableB29AC44D"
+    },
+    "SubnetId": {
+     "Ref": "VpcwpdevpublicSubnet2SubnetF5D8106F"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/wp-dev-publicSubnet2/RouteTableAssociation"
+   }
+  },
+  "VpcwpdevpublicSubnet2DefaultRoute092B9DD7": {
+   "Type": "AWS::EC2::Route",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VpcwpdevpublicSubnet2RouteTableB29AC44D"
+    },
+    "DestinationCidrBlock": "0.0.0.0/0",
+    "GatewayId": {
+     "Ref": "VpcIGWD7BA715C"
+    }
+   },
+   "DependsOn": [
+    "VpcVPCGWBF912B6E"
+   ],
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/wp-dev-publicSubnet2/DefaultRoute"
+   }
+  },
+  "VpcwpdevprivateSubnet1Subnet7C6CF31F": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    },
+    "AvailabilityZone": "ap-northeast-1a",
+    "CidrBlock": "10.0.2.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "wp-dev-private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "NetworkSecurity/Vpc/wp-dev-privateSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/wp-dev-privateSubnet1/Subnet"
+   }
+  },
+  "VpcwpdevprivateSubnet1RouteTableB8FB13F2": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "NetworkSecurity/Vpc/wp-dev-privateSubnet1"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/wp-dev-privateSubnet1/RouteTable"
+   }
+  },
+  "VpcwpdevprivateSubnet1RouteTableAssociationB614794A": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VpcwpdevprivateSubnet1RouteTableB8FB13F2"
+    },
+    "SubnetId": {
+     "Ref": "VpcwpdevprivateSubnet1Subnet7C6CF31F"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/wp-dev-privateSubnet1/RouteTableAssociation"
+   }
+  },
+  "VpcwpdevprivateSubnet2SubnetFBE52A96": {
+   "Type": "AWS::EC2::Subnet",
+   "Properties": {
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    },
+    "AvailabilityZone": "ap-northeast-1c",
+    "CidrBlock": "10.0.3.0/24",
+    "MapPublicIpOnLaunch": false,
+    "Tags": [
+     {
+      "Key": "aws-cdk:subnet-name",
+      "Value": "wp-dev-private"
+     },
+     {
+      "Key": "aws-cdk:subnet-type",
+      "Value": "Isolated"
+     },
+     {
+      "Key": "Name",
+      "Value": "NetworkSecurity/Vpc/wp-dev-privateSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/wp-dev-privateSubnet2/Subnet"
+   }
+  },
+  "VpcwpdevprivateSubnet2RouteTable59928F09": {
+   "Type": "AWS::EC2::RouteTable",
+   "Properties": {
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    },
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "NetworkSecurity/Vpc/wp-dev-privateSubnet2"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/wp-dev-privateSubnet2/RouteTable"
+   }
+  },
+  "VpcwpdevprivateSubnet2RouteTableAssociationD47864E3": {
+   "Type": "AWS::EC2::SubnetRouteTableAssociation",
+   "Properties": {
+    "RouteTableId": {
+     "Ref": "VpcwpdevprivateSubnet2RouteTable59928F09"
+    },
+    "SubnetId": {
+     "Ref": "VpcwpdevprivateSubnet2SubnetFBE52A96"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/wp-dev-privateSubnet2/RouteTableAssociation"
+   }
+  },
+  "VpcIGWD7BA715C": {
+   "Type": "AWS::EC2::InternetGateway",
+   "Properties": {
+    "Tags": [
+     {
+      "Key": "Name",
+      "Value": "wp-dev-vpc"
+     }
+    ]
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/IGW"
+   }
+  },
+  "VpcVPCGWBF912B6E": {
+   "Type": "AWS::EC2::VPCGatewayAttachment",
+   "Properties": {
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    },
+    "InternetGatewayId": {
+     "Ref": "VpcIGWD7BA715C"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/Vpc/VPCGW"
+   }
+  },
+  "SgELBA6450BBC": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Security Group for ELB",
+    "GroupName": "wp-dev-sg-elb",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "255.255.255.255/32",
+      "Description": "Disallow all traffic",
+      "FromPort": 252,
+      "IpProtocol": "icmp",
+      "ToPort": 86
+     }
+    ],
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/SgELB/Resource"
+   }
+  },
+  "SgEC23ABC55F9": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Security Group for EC2",
+    "GroupName": "wp-dev-sg-ec2",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "255.255.255.255/32",
+      "Description": "Disallow all traffic",
+      "FromPort": 252,
+      "IpProtocol": "icmp",
+      "ToPort": 86
+     }
+    ],
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/SgEC2/Resource"
+   }
+  },
+  "SgRDS204BC659": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Security Group for RDS",
+    "GroupName": "wp-dev-sg-rds",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "255.255.255.255/32",
+      "Description": "Disallow all traffic",
+      "FromPort": 252,
+      "IpProtocol": "icmp",
+      "ToPort": 86
+     }
+    ],
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/SgRDS/Resource"
+   }
+  },
+  "SgEFS6BEFFE85": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Security Group for EFS",
+    "GroupName": "wp-dev-sg-efs",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "255.255.255.255/32",
+      "Description": "Disallow all traffic",
+      "FromPort": 252,
+      "IpProtocol": "icmp",
+      "ToPort": 86
+     }
+    ],
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/SgEFS/Resource"
+   }
+  },
+  "SgSSM5EDD6E35": {
+   "Type": "AWS::EC2::SecurityGroup",
+   "Properties": {
+    "GroupDescription": "Security Group for SSM",
+    "GroupName": "wp-dev-sg-ssm",
+    "SecurityGroupEgress": [
+     {
+      "CidrIp": "255.255.255.255/32",
+      "Description": "Disallow all traffic",
+      "FromPort": 252,
+      "IpProtocol": "icmp",
+      "ToPort": 86
+     }
+    ],
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    }
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/SgSSM/Resource"
+   }
+  },
+  "S3EndpointD570F362": {
+   "Type": "AWS::EC2::VPCEndpoint",
+   "Properties": {
+    "ServiceName": {
+     "Fn::Join": [
+      "",
+      [
+       "com.amazonaws.",
+       {
+        "Ref": "AWS::Region"
+       },
+       ".s3"
+      ]
+     ]
+    },
+    "VpcId": {
+     "Ref": "Vpc8378EB38"
+    },
+    "RouteTableIds": [
+     {
+      "Ref": "VpcwpdevpublicSubnet1RouteTableD48E163D"
+     },
+     {
+      "Ref": "VpcwpdevpublicSubnet2RouteTableB29AC44D"
+     }
+    ],
+    "VpcEndpointType": "Gateway"
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/S3Endpoint/Resource"
+   }
+  },
+  "RoleEC2C3ED1CFF": {
+   "Type": "AWS::IAM::Role",
+   "Properties": {
+    "AssumeRolePolicyDocument": {
+     "Statement": [
+      {
+       "Action": "sts:AssumeRole",
+       "Effect": "Allow",
+       "Principal": {
+        "Service": "ec2.amazonaws.com"
+       }
+      }
+     ],
+     "Version": "2012-10-17"
+    },
+    "Description": "Role for EC2",
+    "RoleName": "wp-dev-role-ec2"
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/RoleEC2/Resource"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/1WOQQ+CMAyFf4v3MSNc9GiMMd4IGK9mzBqr0JGt0xDCf3fKlHh6r1/a15fKdCkXM/V0iT7fkxor2Zes9F0EdOpBp7I/tlpsLnTMNyL3VY269BUBv9nkCuMZDqqqYeITWztnNCpGQ79lkVt8KIYpY08MNvhdoE/VxadxWnOodW2AWJSgvUXudtb49vPuD8SDUHtL59YgcUz6joNA1ci+MGPZtw6DKMAZb/WIoh9E3vHV0DyTK7nIZjeHmFhPjA3IYtQXZeqs3EMBAAA="
+   },
+   "Metadata": {
+    "aws:cdk:path": "NetworkSecurity/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

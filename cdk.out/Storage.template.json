@@ -1,0 +1,122 @@
+{
+ "Resources": {
+  "SgEFSfromStorageSgEC2228F302E204978122EB4": {
+   "Type": "AWS::EC2::SecurityGroupIngress",
+   "Properties": {
+    "IpProtocol": "tcp",
+    "Description": "from StorageSgEC2228F302E:2049",
+    "FromPort": 2049,
+    "GroupId": "sg-048b29406f39e7f78",
+    "SourceSecurityGroupId": "sg-0397d46dfc77fc730",
+    "ToPort": 2049
+   },
+   "Metadata": {
+    "aws:cdk:path": "Storage/SgEFS/from StorageSgEC2228F302E:2049"
+   }
+  },
+  "SgEC2toStorageSgEFSB1AED6F9204914598ECE": {
+   "Type": "AWS::EC2::SecurityGroupEgress",
+   "Properties": {
+    "GroupId": "sg-0397d46dfc77fc730",
+    "IpProtocol": "tcp",
+    "Description": "to StorageSgEFSB1AED6F9:2049",
+    "DestinationSecurityGroupId": "sg-048b29406f39e7f78",
+    "FromPort": 2049,
+    "ToPort": 2049
+   },
+   "Metadata": {
+    "aws:cdk:path": "Storage/SgEC2/to StorageSgEFSB1AED6F9:2049"
+   }
+  },
+  "Efs9E8BF36B": {
+   "Type": "AWS::EFS::FileSystem",
+   "Properties": {
+    "Encrypted": true,
+    "FileSystemTags": [
+     {
+      "Key": "Name",
+      "Value": "wp-dev-efs"
+     }
+    ]
+   },
+   "UpdateReplacePolicy": "Delete",
+   "DeletionPolicy": "Delete",
+   "Metadata": {
+    "aws:cdk:path": "Storage/Efs/Resource"
+   }
+  },
+  "EfsEfsMountTarget195B2DD2E": {
+   "Type": "AWS::EFS::MountTarget",
+   "Properties": {
+    "FileSystemId": {
+     "Ref": "Efs9E8BF36B"
+    },
+    "SecurityGroups": [
+     "sg-048b29406f39e7f78"
+    ],
+    "SubnetId": "subnet-060fb6a70225f77de"
+   },
+   "Metadata": {
+    "aws:cdk:path": "Storage/Efs/EfsMountTarget1"
+   }
+  },
+  "EfsEfsMountTarget2315C927F": {
+   "Type": "AWS::EFS::MountTarget",
+   "Properties": {
+    "FileSystemId": {
+     "Ref": "Efs9E8BF36B"
+    },
+    "SecurityGroups": [
+     "sg-048b29406f39e7f78"
+    ],
+    "SubnetId": "subnet-0073d482687777b0b"
+   },
+   "Metadata": {
+    "aws:cdk:path": "Storage/Efs/EfsMountTarget2"
+   }
+  },
+  "CDKMetadata": {
+   "Type": "AWS::CDK::Metadata",
+   "Properties": {
+    "Analytics": "v2:deflate64:H4sIAAAAAAAA/12NwQrCMBBEv6X3dKXpRc+i4kGQxrvEuK2xbSLZBAkh/26reNDTMG8eDAe+hKqQTyrVtS8HfYEkvFQ9a5BscArZtJ0TKg5p3RqBKjjt487Z8NibziER++ebN84MW4K01QOKSB7H2fttBxuMP0nXoc95Bt/TzI7R36xZ1LCCqi7upHXpJlmPCM0nX2WYmea7AAAA"
+   },
+   "Metadata": {
+    "aws:cdk:path": "Storage/CDKMetadata/Default"
+   }
+  }
+ },
+ "Parameters": {
+  "BootstrapVersion": {
+   "Type": "AWS::SSM::Parameter::Value<String>",
+   "Default": "/cdk-bootstrap/hnb659fds/version",
+   "Description": "Version of the CDK Bootstrap resources in this environment, automatically retrieved from SSM Parameter Store. [cdk:skip]"
+  }
+ },
+ "Rules": {
+  "CheckBootstrapVersion": {
+   "Assertions": [
+    {
+     "Assert": {
+      "Fn::Not": [
+       {
+        "Fn::Contains": [
+         [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5"
+         ],
+         {
+          "Ref": "BootstrapVersion"
+         }
+        ]
+       }
+      ]
+     },
+     "AssertDescription": "CDK bootstrap stack version 6 required. Please run 'cdk bootstrap' with a recent version of the CDK CLI."
+    }
+   ]
+  }
+ }
+}

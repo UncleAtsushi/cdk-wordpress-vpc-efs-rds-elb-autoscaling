@@ -1,0 +1,20 @@
+{
+  "version": "20.0.0",
+  "files": {
+    "0c7e86c80f8f338276ff1c4e6ba54d1327275d1779f4d38a9b24d88d71a70e57": {
+      "source": {
+        "path": "Route53Stack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "738452829225-ap-northeast-1": {
+          "bucketName": "cdk-hnb659fds-assets-738452829225-ap-northeast-1",
+          "objectKey": "0c7e86c80f8f338276ff1c4e6ba54d1327275d1779f4d38a9b24d88d71a70e57.json",
+          "region": "ap-northeast-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-file-publishing-role-738452829225-ap-northeast-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

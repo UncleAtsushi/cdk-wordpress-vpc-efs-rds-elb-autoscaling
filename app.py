@@ -3,26 +3,34 @@ import os
 
 import aws_cdk as cdk
 
-from wordpress.wordpress_stack import WordpressStack
+from Network.Network_stack import NetworkStack
+from Storage.Storage_stack import StorageStack
+from Database.Database_stack import DatabaseStack
+from Computing.Computing_stack import ComputingStack
 
+my_account = "738452829225"
+my_region = "ap-northeast-1"
+# my_region = "ap-northeast-3"
+# my_region = "us-east-1"
+
+envJP = cdk.Environment(account=my_account, region=my_region)
+envJP3 = cdk.Environment(account=my_account, region=my_region)
+envUS = cdk.Environment(account=my_account, region=my_region)
 
 app = cdk.App()
-WordpressStack(app, "WordpressStack",
-    # If you don't specify 'env', this stack will be environment-agnostic.
-    # Account/Region-dependent features and context lookups will not work,
-    # but a single synthesized template can be deployed anywhere.
+NetworkStack(app, "Network", env=envJP)
+StorageStack(app, "Storage", env=envJP)
+DatabaseStack(app, "Database", env=envJP)
+ComputingStack(app, "Computing", env=envJP)
 
-    # Uncomment the next line to specialize this stack for the AWS Account
-    # and Region that are implied by the current CLI configuration.
+# NetworkStack(app, "Network", env=envUS)
+# StorageStack(app, "Storage", env=envUS)
+# DatabaseStack(app, "Database", env=envUS)
+# ComputingStack(app, "Computing", env=envUS)
 
-    #env=cdk.Environment(account=os.getenv('CDK_DEFAULT_ACCOUNT'), region=os.getenv('CDK_DEFAULT_REGION')),
-
-    # Uncomment the next line if you know exactly what Account and Region you
-    # want to deploy the stack to. */
-
-    #env=cdk.Environment(account='123456789012', region='us-east-1'),
-
-    # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
-    )
+# NetworkStack(app, "Network", env=envJP3)
+# StorageStack(app, "Storage", env=envJP3)
+# DatabaseStack(app, "Database", env=envJP3)
+# ComputingStack(app, "Computing", env=envJP3)
 
 app.synth()

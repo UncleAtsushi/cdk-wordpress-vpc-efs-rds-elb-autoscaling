@@ -1,0 +1,20 @@
+{
+  "version": "20.0.0",
+  "files": {
+    "52d8d4c20d8f091c3aaddc3eee3ac5e28916818149088b11b7dd234c287de991": {
+      "source": {
+        "path": "AcmJP.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "738452829225-ap-northeast-1": {
+          "bucketName": "cdk-hnb659fds-assets-738452829225-ap-northeast-1",
+          "objectKey": "52d8d4c20d8f091c3aaddc3eee3ac5e28916818149088b11b7dd234c287de991.json",
+          "region": "ap-northeast-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-file-publishing-role-738452829225-ap-northeast-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

@@ -1,0 +1,2239 @@
+{
+  "version": "tree-0.1",
+  "tree": {
+    "id": "App",
+    "path": "",
+    "children": {
+      "Tree": {
+        "id": "Tree",
+        "path": "Tree",
+        "constructInfo": {
+          "fqn": "constructs.Construct",
+          "version": "10.1.68"
+        }
+      },
+      "Network": {
+        "id": "Network",
+        "path": "Network",
+        "children": {
+          "Vpc": {
+            "id": "Vpc",
+            "path": "Network/Vpc",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Network/Vpc/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPC",
+                  "aws:cdk:cloudformation:props": {
+                    "cidrBlock": "10.0.0.0/16",
+                    "enableDnsHostnames": true,
+                    "enableDnsSupport": true,
+                    "instanceTenancy": "default",
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "wp-dev-vpc"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnVPC",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-publicSubnet1": {
+                "id": "wp-dev-publicSubnet1",
+                "path": "Network/Vpc/wp-dev-publicSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "Network/Vpc/wp-dev-publicSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "Vpc8378EB38"
+                        },
+                        "availabilityZone": "ap-northeast-1a",
+                        "cidrBlock": "10.0.0.0/24",
+                        "mapPublicIpOnLaunch": true,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "wp-dev-public"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "Network/Vpc/wp-dev-publicSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "Network/Vpc/wp-dev-publicSubnet1/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "Network/Vpc/wp-dev-publicSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "Vpc8378EB38"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "Network/Vpc/wp-dev-publicSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "Network/Vpc/wp-dev-publicSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "VpcwpdevpublicSubnet1RouteTableD48E163D"
+                        },
+                        "subnetId": {
+                          "Ref": "VpcwpdevpublicSubnet1SubnetB4CF9076"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "Network/Vpc/wp-dev-publicSubnet1/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "VpcwpdevpublicSubnet1RouteTableD48E163D"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "gatewayId": {
+                          "Ref": "VpcIGWD7BA715C"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "EIP": {
+                    "id": "EIP",
+                    "path": "Network/Vpc/wp-dev-publicSubnet1/EIP",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::EIP",
+                      "aws:cdk:cloudformation:props": {
+                        "domain": "vpc",
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "Network/Vpc/wp-dev-publicSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnEIP",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "NATGateway": {
+                    "id": "NATGateway",
+                    "path": "Network/Vpc/wp-dev-publicSubnet1/NATGateway",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::NatGateway",
+                      "aws:cdk:cloudformation:props": {
+                        "subnetId": {
+                          "Ref": "VpcwpdevpublicSubnet1SubnetB4CF9076"
+                        },
+                        "allocationId": {
+                          "Fn::GetAtt": [
+                            "VpcwpdevpublicSubnet1EIPAED65D13",
+                            "AllocationId"
+                          ]
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "Network/Vpc/wp-dev-publicSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnNatGateway",
+                      "version": "2.28.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PublicSubnet",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-publicSubnet2": {
+                "id": "wp-dev-publicSubnet2",
+                "path": "Network/Vpc/wp-dev-publicSubnet2",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "Network/Vpc/wp-dev-publicSubnet2/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "Vpc8378EB38"
+                        },
+                        "availabilityZone": "ap-northeast-1c",
+                        "cidrBlock": "10.0.1.0/24",
+                        "mapPublicIpOnLaunch": true,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "wp-dev-public"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Public"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "Network/Vpc/wp-dev-publicSubnet2"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "Network/Vpc/wp-dev-publicSubnet2/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "Network/Vpc/wp-dev-publicSubnet2/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "Vpc8378EB38"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "Network/Vpc/wp-dev-publicSubnet2"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "Network/Vpc/wp-dev-publicSubnet2/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "VpcwpdevpublicSubnet2RouteTableB29AC44D"
+                        },
+                        "subnetId": {
+                          "Ref": "VpcwpdevpublicSubnet2SubnetF5D8106F"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "Network/Vpc/wp-dev-publicSubnet2/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "VpcwpdevpublicSubnet2RouteTableB29AC44D"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "gatewayId": {
+                          "Ref": "VpcIGWD7BA715C"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
+                      "version": "2.28.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PublicSubnet",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-with-natSubnet1": {
+                "id": "wp-dev-private-with-natSubnet1",
+                "path": "Network/Vpc/wp-dev-private-with-natSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "Network/Vpc/wp-dev-private-with-natSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "Vpc8378EB38"
+                        },
+                        "availabilityZone": "ap-northeast-1a",
+                        "cidrBlock": "10.0.2.0/24",
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "wp-dev-private-with-nat"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "Network/Vpc/wp-dev-private-with-natSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "Network/Vpc/wp-dev-private-with-natSubnet1/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "Network/Vpc/wp-dev-private-with-natSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "Vpc8378EB38"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "Network/Vpc/wp-dev-private-with-natSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "Network/Vpc/wp-dev-private-with-natSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "VpcwpdevprivatewithnatSubnet1RouteTableB4AE3971"
+                        },
+                        "subnetId": {
+                          "Ref": "VpcwpdevprivatewithnatSubnet1Subnet3D82CE84"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "Network/Vpc/wp-dev-private-with-natSubnet1/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "VpcwpdevprivatewithnatSubnet1RouteTableB4AE3971"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "natGatewayId": {
+                          "Ref": "VpcwpdevpublicSubnet1NATGatewayA9357629"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
+                      "version": "2.28.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PrivateSubnet",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-with-natSubnet2": {
+                "id": "wp-dev-private-with-natSubnet2",
+                "path": "Network/Vpc/wp-dev-private-with-natSubnet2",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "Network/Vpc/wp-dev-private-with-natSubnet2/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "Vpc8378EB38"
+                        },
+                        "availabilityZone": "ap-northeast-1c",
+                        "cidrBlock": "10.0.3.0/24",
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "wp-dev-private-with-nat"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Private"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "Network/Vpc/wp-dev-private-with-natSubnet2"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "Network/Vpc/wp-dev-private-with-natSubnet2/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "Network/Vpc/wp-dev-private-with-natSubnet2/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "Vpc8378EB38"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "Network/Vpc/wp-dev-private-with-natSubnet2"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "Network/Vpc/wp-dev-private-with-natSubnet2/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "VpcwpdevprivatewithnatSubnet2RouteTable6AE0394D"
+                        },
+                        "subnetId": {
+                          "Ref": "VpcwpdevprivatewithnatSubnet2Subnet03EF438B"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "DefaultRoute": {
+                    "id": "DefaultRoute",
+                    "path": "Network/Vpc/wp-dev-private-with-natSubnet2/DefaultRoute",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Route",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "VpcwpdevprivatewithnatSubnet2RouteTable6AE0394D"
+                        },
+                        "destinationCidrBlock": "0.0.0.0/0",
+                        "natGatewayId": {
+                          "Ref": "VpcwpdevpublicSubnet1NATGatewayA9357629"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRoute",
+                      "version": "2.28.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PrivateSubnet",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-isolatedSubnet1": {
+                "id": "wp-dev-private-isolatedSubnet1",
+                "path": "Network/Vpc/wp-dev-private-isolatedSubnet1",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "Network/Vpc/wp-dev-private-isolatedSubnet1/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "Vpc8378EB38"
+                        },
+                        "availabilityZone": "ap-northeast-1a",
+                        "cidrBlock": "10.0.4.0/24",
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "wp-dev-private-isolated"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Isolated"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "Network/Vpc/wp-dev-private-isolatedSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "Network/Vpc/wp-dev-private-isolatedSubnet1/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "Network/Vpc/wp-dev-private-isolatedSubnet1/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "Vpc8378EB38"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "Network/Vpc/wp-dev-private-isolatedSubnet1"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "Network/Vpc/wp-dev-private-isolatedSubnet1/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "VpcwpdevprivateisolatedSubnet1RouteTableCF4731F2"
+                        },
+                        "subnetId": {
+                          "Ref": "VpcwpdevprivateisolatedSubnet1SubnetA847F8DE"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.28.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PrivateSubnet",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-isolatedSubnet2": {
+                "id": "wp-dev-private-isolatedSubnet2",
+                "path": "Network/Vpc/wp-dev-private-isolatedSubnet2",
+                "children": {
+                  "Subnet": {
+                    "id": "Subnet",
+                    "path": "Network/Vpc/wp-dev-private-isolatedSubnet2/Subnet",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::Subnet",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "Vpc8378EB38"
+                        },
+                        "availabilityZone": "ap-northeast-1c",
+                        "cidrBlock": "10.0.5.0/24",
+                        "mapPublicIpOnLaunch": false,
+                        "tags": [
+                          {
+                            "key": "aws-cdk:subnet-name",
+                            "value": "wp-dev-private-isolated"
+                          },
+                          {
+                            "key": "aws-cdk:subnet-type",
+                            "value": "Isolated"
+                          },
+                          {
+                            "key": "Name",
+                            "value": "Network/Vpc/wp-dev-private-isolatedSubnet2"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnet",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "Acl": {
+                    "id": "Acl",
+                    "path": "Network/Vpc/wp-dev-private-isolatedSubnet2/Acl",
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.Resource",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "RouteTable": {
+                    "id": "RouteTable",
+                    "path": "Network/Vpc/wp-dev-private-isolatedSubnet2/RouteTable",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::RouteTable",
+                      "aws:cdk:cloudformation:props": {
+                        "vpcId": {
+                          "Ref": "Vpc8378EB38"
+                        },
+                        "tags": [
+                          {
+                            "key": "Name",
+                            "value": "Network/Vpc/wp-dev-private-isolatedSubnet2"
+                          }
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnRouteTable",
+                      "version": "2.28.1"
+                    }
+                  },
+                  "RouteTableAssociation": {
+                    "id": "RouteTableAssociation",
+                    "path": "Network/Vpc/wp-dev-private-isolatedSubnet2/RouteTableAssociation",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::EC2::SubnetRouteTableAssociation",
+                      "aws:cdk:cloudformation:props": {
+                        "routeTableId": {
+                          "Ref": "VpcwpdevprivateisolatedSubnet2RouteTableF35C4332"
+                        },
+                        "subnetId": {
+                          "Ref": "VpcwpdevprivateisolatedSubnet2Subnet11C5FB06"
+                        }
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_ec2.CfnSubnetRouteTableAssociation",
+                      "version": "2.28.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.PrivateSubnet",
+                  "version": "2.28.1"
+                }
+              },
+              "IGW": {
+                "id": "IGW",
+                "path": "Network/Vpc/IGW",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::InternetGateway",
+                  "aws:cdk:cloudformation:props": {
+                    "tags": [
+                      {
+                        "key": "Name",
+                        "value": "wp-dev-vpc"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnInternetGateway",
+                  "version": "2.28.1"
+                }
+              },
+              "VPCGW": {
+                "id": "VPCGW",
+                "path": "Network/Vpc/VPCGW",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPCGatewayAttachment",
+                  "aws:cdk:cloudformation:props": {
+                    "vpcId": {
+                      "Ref": "Vpc8378EB38"
+                    },
+                    "internetGatewayId": {
+                      "Ref": "VpcIGWD7BA715C"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnVPCGatewayAttachment",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.Vpc",
+              "version": "2.28.1"
+            }
+          },
+          "SgELB": {
+            "id": "SgELB",
+            "path": "Network/SgELB",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Network/SgELB/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "groupDescription": "Security Group for ELB",
+                    "groupName": "wp-dev-sg-elb",
+                    "securityGroupEgress": [
+                      {
+                        "cidrIp": "255.255.255.255/32",
+                        "description": "Disallow all traffic",
+                        "ipProtocol": "icmp",
+                        "fromPort": 252,
+                        "toPort": 86
+                      }
+                    ],
+                    "vpcId": {
+                      "Ref": "Vpc8378EB38"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+              "version": "2.28.1"
+            }
+          },
+          "SgEC2": {
+            "id": "SgEC2",
+            "path": "Network/SgEC2",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Network/SgEC2/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "groupDescription": "Security Group for EC2",
+                    "groupName": "wp-dev-sg-ec2",
+                    "securityGroupEgress": [
+                      {
+                        "cidrIp": "255.255.255.255/32",
+                        "description": "Disallow all traffic",
+                        "ipProtocol": "icmp",
+                        "fromPort": 252,
+                        "toPort": 86
+                      }
+                    ],
+                    "vpcId": {
+                      "Ref": "Vpc8378EB38"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+              "version": "2.28.1"
+            }
+          },
+          "SgEFS": {
+            "id": "SgEFS",
+            "path": "Network/SgEFS",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Network/SgEFS/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "groupDescription": "Security Group for EFS",
+                    "groupName": "wp-dev-sg-efs",
+                    "securityGroupEgress": [
+                      {
+                        "cidrIp": "255.255.255.255/32",
+                        "description": "Disallow all traffic",
+                        "ipProtocol": "icmp",
+                        "fromPort": 252,
+                        "toPort": 86
+                      }
+                    ],
+                    "vpcId": {
+                      "Ref": "Vpc8378EB38"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+              "version": "2.28.1"
+            }
+          },
+          "SgRDS": {
+            "id": "SgRDS",
+            "path": "Network/SgRDS",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Network/SgRDS/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "groupDescription": "Security Group for RDS",
+                    "groupName": "wp-dev-sg-rds",
+                    "securityGroupEgress": [
+                      {
+                        "cidrIp": "255.255.255.255/32",
+                        "description": "Disallow all traffic",
+                        "ipProtocol": "icmp",
+                        "fromPort": 252,
+                        "toPort": 86
+                      }
+                    ],
+                    "vpcId": {
+                      "Ref": "Vpc8378EB38"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+              "version": "2.28.1"
+            }
+          },
+          "SgSSM": {
+            "id": "SgSSM",
+            "path": "Network/SgSSM",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Network/SgSSM/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "groupDescription": "Security Group for SSM",
+                    "groupName": "wp-dev-sg-ssm",
+                    "securityGroupEgress": [
+                      {
+                        "cidrIp": "255.255.255.255/32",
+                        "description": "Disallow all traffic",
+                        "ipProtocol": "icmp",
+                        "fromPort": 252,
+                        "toPort": 86
+                      }
+                    ],
+                    "securityGroupIngress": [
+                      {
+                        "cidrIp": {
+                          "Fn::GetAtt": [
+                            "Vpc8378EB38",
+                            "CidrBlock"
+                          ]
+                        },
+                        "ipProtocol": "tcp",
+                        "fromPort": 443,
+                        "toPort": 443,
+                        "description": {
+                          "Fn::Join": [
+                            "",
+                            [
+                              "from ",
+                              {
+                                "Fn::GetAtt": [
+                                  "Vpc8378EB38",
+                                  "CidrBlock"
+                                ]
+                              },
+                              ":443"
+                            ]
+                          ]
+                        }
+                      }
+                    ],
+                    "vpcId": {
+                      "Ref": "Vpc8378EB38"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroup",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.SecurityGroup",
+              "version": "2.28.1"
+            }
+          },
+          "SSMEndpoint": {
+            "id": "SSMEndpoint",
+            "path": "Network/SSMEndpoint",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Network/SSMEndpoint/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                  "aws:cdk:cloudformation:props": {
+                    "serviceName": "com.amazonaws.ap-northeast-1.ssm",
+                    "vpcId": {
+                      "Ref": "Vpc8378EB38"
+                    },
+                    "privateDnsEnabled": true,
+                    "securityGroupIds": [
+                      {
+                        "Fn::GetAtt": [
+                          "SgSSM5EDD6E35",
+                          "GroupId"
+                        ]
+                      }
+                    ],
+                    "subnetIds": [
+                      {
+                        "Ref": "VpcwpdevprivatewithnatSubnet1Subnet3D82CE84"
+                      },
+                      {
+                        "Ref": "VpcwpdevprivatewithnatSubnet2Subnet03EF438B"
+                      }
+                    ],
+                    "vpcEndpointType": "Interface"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnVPCEndpoint",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.InterfaceVpcEndpoint",
+              "version": "2.28.1"
+            }
+          },
+          "SSM_MESSAGESEndpoint": {
+            "id": "SSM_MESSAGESEndpoint",
+            "path": "Network/SSM_MESSAGESEndpoint",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Network/SSM_MESSAGESEndpoint/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                  "aws:cdk:cloudformation:props": {
+                    "serviceName": "com.amazonaws.ap-northeast-1.ssmmessages",
+                    "vpcId": {
+                      "Ref": "Vpc8378EB38"
+                    },
+                    "privateDnsEnabled": true,
+                    "securityGroupIds": [
+                      {
+                        "Fn::GetAtt": [
+                          "SgSSM5EDD6E35",
+                          "GroupId"
+                        ]
+                      }
+                    ],
+                    "subnetIds": [
+                      {
+                        "Ref": "VpcwpdevprivatewithnatSubnet1Subnet3D82CE84"
+                      },
+                      {
+                        "Ref": "VpcwpdevprivatewithnatSubnet2Subnet03EF438B"
+                      }
+                    ],
+                    "vpcEndpointType": "Interface"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnVPCEndpoint",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.InterfaceVpcEndpoint",
+              "version": "2.28.1"
+            }
+          },
+          "EC2_MESSAGESEndpoint": {
+            "id": "EC2_MESSAGESEndpoint",
+            "path": "Network/EC2_MESSAGESEndpoint",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Network/EC2_MESSAGESEndpoint/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
+                  "aws:cdk:cloudformation:props": {
+                    "serviceName": "com.amazonaws.ap-northeast-1.ec2messages",
+                    "vpcId": {
+                      "Ref": "Vpc8378EB38"
+                    },
+                    "privateDnsEnabled": true,
+                    "securityGroupIds": [
+                      {
+                        "Fn::GetAtt": [
+                          "SgSSM5EDD6E35",
+                          "GroupId"
+                        ]
+                      }
+                    ],
+                    "subnetIds": [
+                      {
+                        "Ref": "VpcwpdevprivatewithnatSubnet1Subnet3D82CE84"
+                      },
+                      {
+                        "Ref": "VpcwpdevprivatewithnatSubnet2Subnet03EF438B"
+                      }
+                    ],
+                    "vpcEndpointType": "Interface"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnVPCEndpoint",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.InterfaceVpcEndpoint",
+              "version": "2.28.1"
+            }
+          },
+          "RoleEC2": {
+            "id": "RoleEC2",
+            "path": "Network/RoleEC2",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Network/RoleEC2/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::Role",
+                  "aws:cdk:cloudformation:props": {
+                    "assumeRolePolicyDocument": {
+                      "Statement": [
+                        {
+                          "Action": "sts:AssumeRole",
+                          "Effect": "Allow",
+                          "Principal": {
+                            "Service": "ec2.amazonaws.com"
+                          }
+                        }
+                      ],
+                      "Version": "2012-10-17"
+                    },
+                    "description": "Role for EC2",
+                    "managedPolicyArns": [
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonSSMManagedInstanceCore"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/AmazonElasticFileSystemReadOnlyAccess"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/SecretsManagerReadWrite"
+                          ]
+                        ]
+                      },
+                      {
+                        "Fn::Join": [
+                          "",
+                          [
+                            "arn:",
+                            {
+                              "Ref": "AWS::Partition"
+                            },
+                            ":iam::aws:policy/ElasticLoadBalancingReadOnly"
+                          ]
+                        ]
+                      }
+                    ],
+                    "roleName": "wp-dev-role-ec2"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnRole",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_iam.Role",
+              "version": "2.28.1"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "Network/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "Network/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.1.68"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.28.1"
+        }
+      },
+      "Storage": {
+        "id": "Storage",
+        "path": "Storage",
+        "children": {
+          "Vpc": {
+            "id": "Vpc",
+            "path": "Storage/Vpc",
+            "children": {
+              "wp-dev-publicSubnet1": {
+                "id": "wp-dev-publicSubnet1",
+                "path": "Storage/Vpc/wp-dev-publicSubnet1",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-publicSubnet2": {
+                "id": "wp-dev-publicSubnet2",
+                "path": "Storage/Vpc/wp-dev-publicSubnet2",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-with-natSubnet1": {
+                "id": "wp-dev-private-with-natSubnet1",
+                "path": "Storage/Vpc/wp-dev-private-with-natSubnet1",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-with-natSubnet2": {
+                "id": "wp-dev-private-with-natSubnet2",
+                "path": "Storage/Vpc/wp-dev-private-with-natSubnet2",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-isolatedSubnet1": {
+                "id": "wp-dev-private-isolatedSubnet1",
+                "path": "Storage/Vpc/wp-dev-private-isolatedSubnet1",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-isolatedSubnet2": {
+                "id": "wp-dev-private-isolatedSubnet2",
+                "path": "Storage/Vpc/wp-dev-private-isolatedSubnet2",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
+          "SgEFS": {
+            "id": "SgEFS",
+            "path": "Storage/SgEFS",
+            "children": {
+              "from StorageSgEC2228F302E:2049": {
+                "id": "from StorageSgEC2228F302E:2049",
+                "path": "Storage/SgEFS/from StorageSgEC2228F302E:2049",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
+                  "aws:cdk:cloudformation:props": {
+                    "ipProtocol": "tcp",
+                    "description": "from StorageSgEC2228F302E:2049",
+                    "fromPort": 2049,
+                    "groupId": "sg-048b29406f39e7f78",
+                    "sourceSecurityGroupId": "sg-0397d46dfc77fc730",
+                    "toPort": 2049
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroupIngress",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
+          "SgEC2": {
+            "id": "SgEC2",
+            "path": "Storage/SgEC2",
+            "children": {
+              "to StorageSgEFSB1AED6F9:2049": {
+                "id": "to StorageSgEFSB1AED6F9:2049",
+                "path": "Storage/SgEC2/to StorageSgEFSB1AED6F9:2049",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupEgress",
+                  "aws:cdk:cloudformation:props": {
+                    "groupId": "sg-0397d46dfc77fc730",
+                    "ipProtocol": "tcp",
+                    "description": "to StorageSgEFSB1AED6F9:2049",
+                    "destinationSecurityGroupId": "sg-048b29406f39e7f78",
+                    "fromPort": 2049,
+                    "toPort": 2049
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroupEgress",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
+          "Efs": {
+            "id": "Efs",
+            "path": "Storage/Efs",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Storage/Efs/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EFS::FileSystem",
+                  "aws:cdk:cloudformation:props": {
+                    "encrypted": true,
+                    "fileSystemTags": [
+                      {
+                        "key": "Name",
+                        "value": "wp-dev-efs"
+                      }
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_efs.CfnFileSystem",
+                  "version": "2.28.1"
+                }
+              },
+              "EfsMountTarget1": {
+                "id": "EfsMountTarget1",
+                "path": "Storage/Efs/EfsMountTarget1",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EFS::MountTarget",
+                  "aws:cdk:cloudformation:props": {
+                    "fileSystemId": {
+                      "Ref": "Efs9E8BF36B"
+                    },
+                    "securityGroups": [
+                      "sg-048b29406f39e7f78"
+                    ],
+                    "subnetId": "subnet-060fb6a70225f77de"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_efs.CfnMountTarget",
+                  "version": "2.28.1"
+                }
+              },
+              "EfsMountTarget2": {
+                "id": "EfsMountTarget2",
+                "path": "Storage/Efs/EfsMountTarget2",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EFS::MountTarget",
+                  "aws:cdk:cloudformation:props": {
+                    "fileSystemId": {
+                      "Ref": "Efs9E8BF36B"
+                    },
+                    "securityGroups": [
+                      "sg-048b29406f39e7f78"
+                    ],
+                    "subnetId": "subnet-0073d482687777b0b"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_efs.CfnMountTarget",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_efs.FileSystem",
+              "version": "2.28.1"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "Storage/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "Storage/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.1.68"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.28.1"
+        }
+      },
+      "Database": {
+        "id": "Database",
+        "path": "Database",
+        "children": {
+          "Vpc": {
+            "id": "Vpc",
+            "path": "Database/Vpc",
+            "children": {
+              "wp-dev-publicSubnet1": {
+                "id": "wp-dev-publicSubnet1",
+                "path": "Database/Vpc/wp-dev-publicSubnet1",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-publicSubnet2": {
+                "id": "wp-dev-publicSubnet2",
+                "path": "Database/Vpc/wp-dev-publicSubnet2",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-with-natSubnet1": {
+                "id": "wp-dev-private-with-natSubnet1",
+                "path": "Database/Vpc/wp-dev-private-with-natSubnet1",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-with-natSubnet2": {
+                "id": "wp-dev-private-with-natSubnet2",
+                "path": "Database/Vpc/wp-dev-private-with-natSubnet2",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-isolatedSubnet1": {
+                "id": "wp-dev-private-isolatedSubnet1",
+                "path": "Database/Vpc/wp-dev-private-isolatedSubnet1",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-isolatedSubnet2": {
+                "id": "wp-dev-private-isolatedSubnet2",
+                "path": "Database/Vpc/wp-dev-private-isolatedSubnet2",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
+          "SgEC2": {
+            "id": "SgEC2",
+            "path": "Database/SgEC2",
+            "children": {
+              "to DatabaseSgRDS96DCD113:3306": {
+                "id": "to DatabaseSgRDS96DCD113:3306",
+                "path": "Database/SgEC2/to DatabaseSgRDS96DCD113:3306",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupEgress",
+                  "aws:cdk:cloudformation:props": {
+                    "groupId": "sg-0397d46dfc77fc730",
+                    "ipProtocol": "tcp",
+                    "description": "to DatabaseSgRDS96DCD113:3306",
+                    "destinationSecurityGroupId": "sg-0bb22889590c8e525",
+                    "fromPort": 3306,
+                    "toPort": 3306
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroupEgress",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
+          "SgRDS": {
+            "id": "SgRDS",
+            "path": "Database/SgRDS",
+            "children": {
+              "from DatabaseSgEC245F6D6D9:3306": {
+                "id": "from DatabaseSgEC245F6D6D9:3306",
+                "path": "Database/SgRDS/from DatabaseSgEC245F6D6D9:3306",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
+                  "aws:cdk:cloudformation:props": {
+                    "ipProtocol": "tcp",
+                    "description": "from DatabaseSgEC245F6D6D9:3306",
+                    "fromPort": 3306,
+                    "groupId": "sg-0bb22889590c8e525",
+                    "sourceSecurityGroupId": "sg-0397d46dfc77fc730",
+                    "toPort": 3306
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroupIngress",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
+          "DBSubnet": {
+            "id": "DBSubnet",
+            "path": "Database/DBSubnet",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "Database/DBSubnet/Default",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::RDS::DBSubnetGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "dbSubnetGroupDescription": "Subnet Group for RDS",
+                    "subnetIds": [
+                      "subnet-0bfeaa078691b110d",
+                      "subnet-0163bd0fa57b7b547"
+                    ],
+                    "dbSubnetGroupName": "wp-dev-dbsubnet"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_rds.CfnDBSubnetGroup",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_rds.SubnetGroup",
+              "version": "2.28.1"
+            }
+          },
+          "RdsSecret": {
+            "id": "RdsSecret",
+            "path": "Database/RdsSecret",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Database/RdsSecret/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::SecretsManager::Secret",
+                  "aws:cdk:cloudformation:props": {
+                    "description": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "Generated by the CDK for stack: ",
+                          {
+                            "Ref": "AWS::StackName"
+                          }
+                        ]
+                      ]
+                    },
+                    "generateSecretString": {
+                      "passwordLength": 30,
+                      "secretStringTemplate": "{\"username\":\"root\"}",
+                      "generateStringKey": "password",
+                      "excludeCharacters": " %+~`#$&*()|[]{}:;<>?!'/@\"\\"
+                    },
+                    "name": "wp-dev-secret-rds"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_secretsmanager.CfnSecret",
+                  "version": "2.28.1"
+                }
+              },
+              "Attachment": {
+                "id": "Attachment",
+                "path": "Database/RdsSecret/Attachment",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Database/RdsSecret/Attachment/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::SecretsManager::SecretTargetAttachment",
+                      "aws:cdk:cloudformation:props": {
+                        "secretId": {
+                          "Ref": "RdsSecretB2B964C3"
+                        },
+                        "targetId": {
+                          "Ref": "Rds34D05673"
+                        },
+                        "targetType": "AWS::RDS::DBInstance"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_secretsmanager.CfnSecretTargetAttachment",
+                      "version": "2.28.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_secretsmanager.SecretTargetAttachment",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_rds.DatabaseSecret",
+              "version": "2.28.1"
+            }
+          },
+          "Rds": {
+            "id": "Rds",
+            "path": "Database/Rds",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Database/Rds/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::RDS::DBInstance",
+                  "aws:cdk:cloudformation:props": {
+                    "dbInstanceClass": "db.t3.micro",
+                    "allocatedStorage": "20",
+                    "backupRetentionPeriod": 0,
+                    "copyTagsToSnapshot": true,
+                    "dbInstanceIdentifier": "wp-dev-rds",
+                    "dbSubnetGroupName": {
+                      "Ref": "DBSubnet"
+                    },
+                    "deleteAutomatedBackups": true,
+                    "deletionProtection": false,
+                    "engine": "mysql",
+                    "engineVersion": "5.7.37",
+                    "masterUsername": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "{{resolve:secretsmanager:",
+                          {
+                            "Ref": "RdsSecretB2B964C3"
+                          },
+                          ":SecretString:username::}}"
+                        ]
+                      ]
+                    },
+                    "masterUserPassword": {
+                      "Fn::Join": [
+                        "",
+                        [
+                          "{{resolve:secretsmanager:",
+                          {
+                            "Ref": "RdsSecretB2B964C3"
+                          },
+                          ":SecretString:password::}}"
+                        ]
+                      ]
+                    },
+                    "multiAz": true,
+                    "port": "3306",
+                    "publiclyAccessible": false,
+                    "storageType": "gp2",
+                    "vpcSecurityGroups": [
+                      "sg-0bb22889590c8e525"
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_rds.CfnDBInstance",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_rds.DatabaseInstance",
+              "version": "2.28.1"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "Database/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "Database/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.1.68"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.28.1"
+        }
+      },
+      "Computing": {
+        "id": "Computing",
+        "path": "Computing",
+        "children": {
+          "Vpc": {
+            "id": "Vpc",
+            "path": "Computing/Vpc",
+            "children": {
+              "wp-dev-publicSubnet1": {
+                "id": "wp-dev-publicSubnet1",
+                "path": "Computing/Vpc/wp-dev-publicSubnet1",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-publicSubnet2": {
+                "id": "wp-dev-publicSubnet2",
+                "path": "Computing/Vpc/wp-dev-publicSubnet2",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-with-natSubnet1": {
+                "id": "wp-dev-private-with-natSubnet1",
+                "path": "Computing/Vpc/wp-dev-private-with-natSubnet1",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-with-natSubnet2": {
+                "id": "wp-dev-private-with-natSubnet2",
+                "path": "Computing/Vpc/wp-dev-private-with-natSubnet2",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-isolatedSubnet1": {
+                "id": "wp-dev-private-isolatedSubnet1",
+                "path": "Computing/Vpc/wp-dev-private-isolatedSubnet1",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              },
+              "wp-dev-private-isolatedSubnet2": {
+                "id": "wp-dev-private-isolatedSubnet2",
+                "path": "Computing/Vpc/wp-dev-private-isolatedSubnet2",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.Resource",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
+          "SgEC2": {
+            "id": "SgEC2",
+            "path": "Computing/SgEC2",
+            "children": {
+              "from ComputingSgELB9425367B:80": {
+                "id": "from ComputingSgELB9425367B:80",
+                "path": "Computing/SgEC2/from ComputingSgELB9425367B:80",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
+                  "aws:cdk:cloudformation:props": {
+                    "ipProtocol": "tcp",
+                    "description": "Load balancer to target",
+                    "fromPort": 80,
+                    "groupId": "sg-0397d46dfc77fc730",
+                    "sourceSecurityGroupId": "sg-038e7f3a4c280b172",
+                    "toPort": 80
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroupIngress",
+                  "version": "2.28.1"
+                }
+              },
+              "to ComputingSgSSMCD5053DB:443": {
+                "id": "to ComputingSgSSMCD5053DB:443",
+                "path": "Computing/SgEC2/to ComputingSgSSMCD5053DB:443",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupEgress",
+                  "aws:cdk:cloudformation:props": {
+                    "groupId": "sg-0397d46dfc77fc730",
+                    "ipProtocol": "tcp",
+                    "description": "to ComputingSgSSMCD5053DB:443",
+                    "destinationSecurityGroupId": "sg-09e89d7ecc820dfc8",
+                    "fromPort": 443,
+                    "toPort": 443
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroupEgress",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
+          "SgEFS": {
+            "id": "SgEFS",
+            "path": "Computing/SgEFS",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
+          "SgRDS": {
+            "id": "SgRDS",
+            "path": "Computing/SgRDS",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
+          "SgELB": {
+            "id": "SgELB",
+            "path": "Computing/SgELB",
+            "children": {
+              "to ComputingSgEC2C5E1CD63:80": {
+                "id": "to ComputingSgEC2C5E1CD63:80",
+                "path": "Computing/SgELB/to ComputingSgEC2C5E1CD63:80",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupEgress",
+                  "aws:cdk:cloudformation:props": {
+                    "groupId": "sg-038e7f3a4c280b172",
+                    "ipProtocol": "tcp",
+                    "description": "Load balancer to target",
+                    "destinationSecurityGroupId": "sg-0397d46dfc77fc730",
+                    "fromPort": 80,
+                    "toPort": 80
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroupEgress",
+                  "version": "2.28.1"
+                }
+              },
+              "from 0.0.0.0_0:80": {
+                "id": "from 0.0.0.0_0:80",
+                "path": "Computing/SgELB/from 0.0.0.0_0:80",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
+                  "aws:cdk:cloudformation:props": {
+                    "ipProtocol": "tcp",
+                    "cidrIp": "0.0.0.0/0",
+                    "description": "Allow from anyone on port 80",
+                    "fromPort": 80,
+                    "groupId": "sg-038e7f3a4c280b172",
+                    "toPort": 80
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroupIngress",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
+          "SgSSM": {
+            "id": "SgSSM",
+            "path": "Computing/SgSSM",
+            "children": {
+              "from ComputingSgEC2C5E1CD63:443": {
+                "id": "from ComputingSgEC2C5E1CD63:443",
+                "path": "Computing/SgSSM/from ComputingSgEC2C5E1CD63:443",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupIngress",
+                  "aws:cdk:cloudformation:props": {
+                    "ipProtocol": "tcp",
+                    "description": "from ComputingSgEC2C5E1CD63:443",
+                    "fromPort": 443,
+                    "groupId": "sg-09e89d7ecc820dfc8",
+                    "sourceSecurityGroupId": "sg-0397d46dfc77fc730",
+                    "toPort": 443
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroupIngress",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
+          "RoleEC2": {
+            "id": "RoleEC2",
+            "path": "Computing/RoleEC2",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
+          "LaunchTemplate": {
+            "id": "LaunchTemplate",
+            "path": "Computing/LaunchTemplate",
+            "children": {
+              "Profile": {
+                "id": "Profile",
+                "path": "Computing/LaunchTemplate/Profile",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::IAM::InstanceProfile",
+                  "aws:cdk:cloudformation:props": {
+                    "roles": [
+                      "wp-dev-role-ec2"
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.CfnInstanceProfile",
+                  "version": "2.28.1"
+                }
+              },
+              "Resource": {
+                "id": "Resource",
+                "path": "Computing/LaunchTemplate/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::LaunchTemplate",
+                  "aws:cdk:cloudformation:props": {
+                    "launchTemplateData": {
+                      "iamInstanceProfile": {
+                        "arn": {
+                          "Fn::GetAtt": [
+                            "LaunchTemplateProfile94AA77CE",
+                            "Arn"
+                          ]
+                        }
+                      },
+                      "imageId": "ami-08afe855132f68423",
+                      "instanceType": "t2.micro",
+                      "instanceInitiatedShutdownBehavior": "terminate",
+                      "securityGroupIds": [
+                        "sg-0397d46dfc77fc730"
+                      ],
+                      "tagSpecifications": [
+                        {
+                          "resourceType": "instance",
+                          "tags": [
+                            {
+                              "key": "Name",
+                              "value": "Computing/LaunchTemplate"
+                            }
+                          ]
+                        },
+                        {
+                          "resourceType": "volume",
+                          "tags": [
+                            {
+                              "key": "Name",
+                              "value": "Computing/LaunchTemplate"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    "launchTemplateName": "wp-dev-lt"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnLaunchTemplate",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_ec2.LaunchTemplate",
+              "version": "2.28.1"
+            }
+          },
+          "Asg": {
+            "id": "Asg",
+            "path": "Computing/Asg",
+            "children": {
+              "ASG": {
+                "id": "ASG",
+                "path": "Computing/Asg/ASG",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::AutoScaling::AutoScalingGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "maxSize": "4",
+                    "minSize": "2",
+                    "autoScalingGroupName": "wp-dev-asg",
+                    "desiredCapacity": "2",
+                    "healthCheckGracePeriod": 30,
+                    "healthCheckType": "ELB",
+                    "launchTemplate": {
+                      "launchTemplateId": {
+                        "Ref": "LaunchTemplate04EC5460"
+                      },
+                      "version": {
+                        "Fn::GetAtt": [
+                          "LaunchTemplate04EC5460",
+                          "LatestVersionNumber"
+                        ]
+                      }
+                    },
+                    "targetGroupArns": [
+                      {
+                        "Ref": "TargetGroup3D7CD9B8"
+                      }
+                    ],
+                    "vpcZoneIdentifier": [
+                      "subnet-060fb6a70225f77de",
+                      "subnet-0073d482687777b0b"
+                    ]
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_autoscaling.CfnAutoScalingGroup",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_autoscaling.AutoScalingGroup",
+              "version": "2.28.1"
+            }
+          },
+          "Alb": {
+            "id": "Alb",
+            "path": "Computing/Alb",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Computing/Alb/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::LoadBalancer",
+                  "aws:cdk:cloudformation:props": {
+                    "ipAddressType": "ipv4",
+                    "loadBalancerAttributes": [
+                      {
+                        "key": "deletion_protection.enabled",
+                        "value": "false"
+                      },
+                      {
+                        "key": "routing.http2.enabled",
+                        "value": "false"
+                      }
+                    ],
+                    "name": "wp-dev-alb",
+                    "scheme": "internet-facing",
+                    "securityGroups": [
+                      "sg-038e7f3a4c280b172"
+                    ],
+                    "subnets": [
+                      "subnet-0ea4e44b419e04813",
+                      "subnet-04aeacdb6e14474c4"
+                    ],
+                    "type": "application"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_elasticloadbalancingv2.CfnLoadBalancer",
+                  "version": "2.28.1"
+                }
+              },
+              "AddListener": {
+                "id": "AddListener",
+                "path": "Computing/Alb/AddListener",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Computing/Alb/AddListener/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::Listener",
+                      "aws:cdk:cloudformation:props": {
+                        "defaultActions": [
+                          {
+                            "type": "forward",
+                            "targetGroupArn": {
+                              "Ref": "TargetGroup3D7CD9B8"
+                            }
+                          }
+                        ],
+                        "loadBalancerArn": {
+                          "Ref": "Alb16C2F182"
+                        },
+                        "port": 80,
+                        "protocol": "HTTP"
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_elasticloadbalancingv2.CfnListener",
+                      "version": "2.28.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_elasticloadbalancingv2.ApplicationListener",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_elasticloadbalancingv2.ApplicationLoadBalancer",
+              "version": "2.28.1"
+            }
+          },
+          "TargetGroup": {
+            "id": "TargetGroup",
+            "path": "Computing/TargetGroup",
+            "children": {
+              "Resource": {
+                "id": "Resource",
+                "path": "Computing/TargetGroup/Resource",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::ElasticLoadBalancingV2::TargetGroup",
+                  "aws:cdk:cloudformation:props": {
+                    "healthCheckEnabled": true,
+                    "healthCheckPath": "/readme.html",
+                    "healthCheckPort": "80",
+                    "healthCheckProtocol": "HTTP",
+                    "healthCheckTimeoutSeconds": 25,
+                    "name": "wp-dev-tg",
+                    "port": 80,
+                    "protocol": "HTTP",
+                    "targetGroupAttributes": [
+                      {
+                        "key": "stickiness.enabled",
+                        "value": "false"
+                      }
+                    ],
+                    "targetType": "instance",
+                    "unhealthyThresholdCount": 5,
+                    "vpcId": "vpc-07035a01277e1bc30"
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_elasticloadbalancingv2.CfnTargetGroup",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_elasticloadbalancingv2.ApplicationTargetGroup",
+              "version": "2.28.1"
+            }
+          },
+          "CDKMetadata": {
+            "id": "CDKMetadata",
+            "path": "Computing/CDKMetadata",
+            "children": {
+              "Default": {
+                "id": "Default",
+                "path": "Computing/CDKMetadata/Default",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.CfnResource",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "constructs.Construct",
+              "version": "10.1.68"
+            }
+          }
+        },
+        "constructInfo": {
+          "fqn": "aws-cdk-lib.Stack",
+          "version": "2.28.1"
+        }
+      }
+    },
+    "constructInfo": {
+      "fqn": "aws-cdk-lib.App",
+      "version": "2.28.1"
+    }
+  }
+}

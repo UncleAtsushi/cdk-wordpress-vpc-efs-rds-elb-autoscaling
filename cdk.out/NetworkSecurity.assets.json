@@ -1,0 +1,20 @@
+{
+  "version": "20.0.0",
+  "files": {
+    "d5865021669771e60fa3aac0c121d2a3b3ac888f58325eba8c4835aab3538808": {
+      "source": {
+        "path": "NetworkSecurity.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "738452829225-ap-northeast-1": {
+          "bucketName": "cdk-hnb659fds-assets-738452829225-ap-northeast-1",
+          "objectKey": "d5865021669771e60fa3aac0c121d2a3b3ac888f58325eba8c4835aab3538808.json",
+          "region": "ap-northeast-1",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-file-publishing-role-738452829225-ap-northeast-1"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}
