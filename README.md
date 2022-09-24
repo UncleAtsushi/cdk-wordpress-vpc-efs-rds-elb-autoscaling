@@ -57,5 +57,3 @@ command.
 
 Enjoy!
 # cdk-wordpress-vpc-efs-rds-elb-autoscaling
-# cdk-wordpress-vpc-efs-rds-elb-autoscaling
-# cdk-wordpress-vpc-efs-rds-elb-autoscaling
