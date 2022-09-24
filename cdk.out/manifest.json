@@ -17,20 +17,20 @@
     },
     "Network": {
       "type": "aws:cloudformation:stack",
-      "environment": "aws://738452829225/ap-northeast-1",
+      "environment": "aws://738452829225/us-east-1",
       "properties": {
         "templateFile": "Network.template.json",
         "validateOnSynth": false,
-        "assumeRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-deploy-role-738452829225-ap-northeast-1",
-        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-cfn-exec-role-738452829225-ap-northeast-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-738452829225-ap-northeast-1/65b69c512b310aa4b2d65a94405be5e4d9599a3e8fd4ded73294698ce2b7b103.json",
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-deploy-role-738452829225-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-cfn-exec-role-738452829225-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-738452829225-us-east-1/9475212b85c0013a0120d7c93867aa2bbafb0520e4e0796ac057b809f2bae761.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
           "Network.assets"
         ],
         "lookupRole": {
-          "arn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-lookup-role-738452829225-ap-northeast-1",
+          "arn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-lookup-role-738452829225-us-east-1",
           "requiresBootstrapStackVersion": 8,
           "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
         }
@@ -286,20 +286,20 @@
     },
     "Storage": {
       "type": "aws:cloudformation:stack",
-      "environment": "aws://738452829225/ap-northeast-1",
+      "environment": "aws://738452829225/us-east-1",
       "properties": {
         "templateFile": "Storage.template.json",
         "validateOnSynth": false,
-        "assumeRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-deploy-role-738452829225-ap-northeast-1",
-        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-cfn-exec-role-738452829225-ap-northeast-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-738452829225-ap-northeast-1/5558835b24d95e4e1204e1168171515a4e87c2373bef14d32cb7d77c68f01391.json",
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-deploy-role-738452829225-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-cfn-exec-role-738452829225-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-738452829225-us-east-1/ca48d9dadf22ca6f3497600142c02c74c69be44474e156ec64b33dad97c0891e.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
           "Storage.assets"
         ],
         "lookupRole": {
-          "arn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-lookup-role-738452829225-ap-northeast-1",
+          "arn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-lookup-role-738452829225-us-east-1",
           "requiresBootstrapStackVersion": 8,
           "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
         }
@@ -369,20 +369,20 @@
     },
     "Database": {
       "type": "aws:cloudformation:stack",
-      "environment": "aws://738452829225/ap-northeast-1",
+      "environment": "aws://738452829225/us-east-1",
       "properties": {
         "templateFile": "Database.template.json",
         "validateOnSynth": false,
-        "assumeRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-deploy-role-738452829225-ap-northeast-1",
-        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-cfn-exec-role-738452829225-ap-northeast-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-738452829225-ap-northeast-1/9eb5dbf7d7fc80fde7e947742975eae0a67a2b4962d64b1543de93bb816ba7a0.json",
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-deploy-role-738452829225-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-cfn-exec-role-738452829225-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-738452829225-us-east-1/e825eb018799c4879edd926ab86b6fe1bf21678ce826b23b4016910e5da23a05.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
           "Database.assets"
         ],
         "lookupRole": {
-          "arn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-lookup-role-738452829225-ap-northeast-1",
+          "arn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-lookup-role-738452829225-us-east-1",
           "requiresBootstrapStackVersion": 8,
           "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
         }
@@ -458,20 +458,20 @@
     },
     "Computing": {
       "type": "aws:cloudformation:stack",
-      "environment": "aws://738452829225/ap-northeast-1",
+      "environment": "aws://738452829225/us-east-1",
       "properties": {
         "templateFile": "Computing.template.json",
         "validateOnSynth": false,
-        "assumeRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-deploy-role-738452829225-ap-northeast-1",
-        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-cfn-exec-role-738452829225-ap-northeast-1",
-        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-738452829225-ap-northeast-1/6eb42a19a9401cda11ca5d59f30ed93fdad2f4064c69391738409417e7c12a00.json",
+        "assumeRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-deploy-role-738452829225-us-east-1",
+        "cloudFormationExecutionRoleArn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-cfn-exec-role-738452829225-us-east-1",
+        "stackTemplateAssetObjectUrl": "s3://cdk-hnb659fds-assets-738452829225-us-east-1/63ca72ccaf8ec1a2aa503d727cd938aeec3725670f17cc3b2821ae87b4e1b02b.json",
         "requiresBootstrapStackVersion": 6,
         "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version",
         "additionalDependencies": [
           "Computing.assets"
         ],
         "lookupRole": {
-          "arn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-lookup-role-738452829225-ap-northeast-1",
+          "arn": "arn:${AWS::Partition}:iam::738452829225:role/cdk-hnb659fds-lookup-role-738452829225-us-east-1",
           "requiresBootstrapStackVersion": 8,
           "bootstrapStackVersionSsmParameter": "/cdk-bootstrap/hnb659fds/version"
         }
@@ -492,6 +492,18 @@
             "data": "SgEC2toComputingSgSSMCD5053DB443A8C979BB"
           }
         ],
+        "/Computing/SgEC2/to 0.0.0.0_0:80": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SgEC2to0000080550AE933"
+          }
+        ],
+        "/Computing/SgEC2/to 0.0.0.0_0:443": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SgEC2to00000443E9B0456A"
+          }
+        ],
         "/Computing/SgELB/to ComputingSgEC2C5E1CD63:80": [
           {
             "type": "aws:cdk:logicalId",
@@ -510,6 +522,12 @@
             "data": "SgSSMfromComputingSgEC2C5E1CD6344335EE896C"
           }
         ],
+        "/Computing/RoleEC2/Policy/Resource": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "RoleEC2PolicyA207CE06"
+          }
+        ],
         "/Computing/LaunchTemplate/Profile": [
           {
             "type": "aws:cdk:logicalId",
@@ -522,19 +540,25 @@
             "data": "LaunchTemplate04EC5460"
           }
         ],
+        "/Computing/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": [
+          {
+            "type": "aws:cdk:logicalId",
+            "data": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+          }
+        ],
         "/Computing/Asg": [
           {
             "type": "aws:cdk:warning",
             "data": "desiredCapacity has been configured. Be aware this will reset the size of your AutoScalingGroup on every deployment. See https://github.com/aws/aws-cdk/issues/5215",
             "trace": [
-              "Annotations.addMessage (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/jsii-kernel-RV8pjU/node_modules/aws-cdk-lib/core/lib/annotations.js:1:1213)",
-              "Annotations.addWarning (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/jsii-kernel-RV8pjU/node_modules/aws-cdk-lib/core/lib/annotations.js:1:600)",
-              "new AutoScalingGroup (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/jsii-kernel-RV8pjU/node_modules/aws-cdk-lib/aws-autoscaling/lib/auto-scaling-group.js:1:13492)",
-              "Kernel._create (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/tmpo6n7tuf1/lib/program.js:8223:29)",
-              "Kernel.create (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/tmpo6n7tuf1/lib/program.js:7961:29)",
-              "KernelHost.processRequest (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/tmpo6n7tuf1/lib/program.js:9596:36)",
-              "KernelHost.run (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/tmpo6n7tuf1/lib/program.js:9559:22)",
-              "Immediate._onImmediate (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/tmpo6n7tuf1/lib/program.js:9560:46)",
+              "Annotations.addMessage (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/jsii-kernel-TwLotU/node_modules/aws-cdk-lib/core/lib/annotations.js:1:1213)",
+              "Annotations.addWarning (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/jsii-kernel-TwLotU/node_modules/aws-cdk-lib/core/lib/annotations.js:1:600)",
+              "new AutoScalingGroup (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/jsii-kernel-TwLotU/node_modules/aws-cdk-lib/aws-autoscaling/lib/auto-scaling-group.js:1:13492)",
+              "Kernel._create (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/tmpsyazpsin/lib/program.js:8223:29)",
+              "Kernel.create (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/tmpsyazpsin/lib/program.js:7961:29)",
+              "KernelHost.processRequest (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/tmpsyazpsin/lib/program.js:9596:36)",
+              "KernelHost.run (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/tmpsyazpsin/lib/program.js:9559:22)",
+              "Immediate._onImmediate (/private/var/folders/fq/txgykm1s0gs8kc14jb95zmbm0000gn/T/tmpsyazpsin/lib/program.js:9560:46)",
               "process.processImmediate (node:internal/timers:471:21)"
             ]
           }

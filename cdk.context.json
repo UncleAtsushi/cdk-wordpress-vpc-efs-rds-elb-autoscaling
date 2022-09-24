@@ -1,47 +1,50 @@
 {
-  "availability-zones:account=738452829225:region=ap-northeast-1": [
-    "ap-northeast-1a",
-    "ap-northeast-1c",
-    "ap-northeast-1d"
+  "availability-zones:account=738452829225:region=us-east-1": [
+    "us-east-1a",
+    "us-east-1b",
+    "us-east-1c",
+    "us-east-1d",
+    "us-east-1e",
+    "us-east-1f"
   ],
-  "vpc-provider:account=738452829225:filter.tag:Name=wp-dev-vpc:region=ap-northeast-1:returnAsymmetricSubnets=true": {
-    "vpcId": "vpc-07035a01277e1bc30",
+  "vpc-provider:account=738452829225:filter.tag:Name=wp-dev-vpc:region=us-east-1:returnAsymmetricSubnets=true": {
+    "vpcId": "vpc-010d4e8415b6de493",
     "vpcCidrBlock": "10.0.0.0/16",
     "availabilityZones": [],
     "subnetGroups": [
-      {
-        "name": "wp-dev-private-with-nat",
-        "type": "Private",
-        "subnets": [
-          {
-            "subnetId": "subnet-060fb6a70225f77de",
-            "cidr": "10.0.2.0/24",
-            "availabilityZone": "ap-northeast-1a",
-            "routeTableId": "rtb-0af68f0aa7c3a4a71"
-          },
-          {
-            "subnetId": "subnet-0073d482687777b0b",
-            "cidr": "10.0.3.0/24",
-            "availabilityZone": "ap-northeast-1c",
-            "routeTableId": "rtb-0c18793358afe176d"
-          }
-        ]
-      },
       {
         "name": "wp-dev-private-isolated",
         "type": "Isolated",
         "subnets": [
           {
-            "subnetId": "subnet-0bfeaa078691b110d",
+            "subnetId": "subnet-0d0236bbe9cf9bf2b",
             "cidr": "10.0.4.0/24",
-            "availabilityZone": "ap-northeast-1a",
-            "routeTableId": "rtb-0af4c8cc87f9a7b84"
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-0691b18e549663208"
           },
           {
-            "subnetId": "subnet-0163bd0fa57b7b547",
+            "subnetId": "subnet-05a5039b4a6c4f861",
             "cidr": "10.0.5.0/24",
-            "availabilityZone": "ap-northeast-1c",
-            "routeTableId": "rtb-0f7b5a3266ca3f965"
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-0ca3d559eefd7e034"
+          }
+        ]
+      },
+      {
+        "name": "wp-dev-private-with-nat",
+        "type": "Private",
+        "subnets": [
+          {
+            "subnetId": "subnet-064acf5159d13b7ac",
+            "cidr": "10.0.2.0/24",
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-0f833e9d3521d8157"
+          },
+          {
+            "subnetId": "subnet-0dfd4aba470c0ae8f",
+            "cidr": "10.0.3.0/24",
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-07c659178a0139072"
           }
         ]
       },
@@ -50,39 +53,39 @@
         "type": "Public",
         "subnets": [
           {
-            "subnetId": "subnet-0ea4e44b419e04813",
+            "subnetId": "subnet-0f4c56dd01e1487bb",
             "cidr": "10.0.0.0/24",
-            "availabilityZone": "ap-northeast-1a",
-            "routeTableId": "rtb-02685cb6bdeb13a76"
+            "availabilityZone": "us-east-1a",
+            "routeTableId": "rtb-0d4cfc56f72d10a54"
           },
           {
-            "subnetId": "subnet-04aeacdb6e14474c4",
+            "subnetId": "subnet-065a602d0fcbb71ad",
             "cidr": "10.0.1.0/24",
-            "availabilityZone": "ap-northeast-1c",
-            "routeTableId": "rtb-0c17cc1cddafbd800"
+            "availabilityZone": "us-east-1b",
+            "routeTableId": "rtb-0cb60a7493ba3b715"
           }
         ]
       }
     ]
   },
-  "security-group:account=738452829225:region=ap-northeast-1:securityGroupName=wp-dev-sg-efs:vpcId=vpc-07035a01277e1bc30": {
-    "securityGroupId": "sg-048b29406f39e7f78",
+  "security-group:account=738452829225:region=us-east-1:securityGroupName=wp-dev-sg-efs:vpcId=vpc-010d4e8415b6de493": {
+    "securityGroupId": "sg-0100ec1c821168686",
     "allowAllOutbound": false
   },
-  "security-group:account=738452829225:region=ap-northeast-1:securityGroupName=wp-dev-sg-ec2:vpcId=vpc-07035a01277e1bc30": {
-    "securityGroupId": "sg-0397d46dfc77fc730",
+  "security-group:account=738452829225:region=us-east-1:securityGroupName=wp-dev-sg-ec2:vpcId=vpc-010d4e8415b6de493": {
+    "securityGroupId": "sg-041bd4b7422599430",
     "allowAllOutbound": false
   },
-  "security-group:account=738452829225:region=ap-northeast-1:securityGroupName=wp-dev-sg-rds:vpcId=vpc-07035a01277e1bc30": {
-    "securityGroupId": "sg-0bb22889590c8e525",
+  "security-group:account=738452829225:region=us-east-1:securityGroupName=wp-dev-sg-rds:vpcId=vpc-010d4e8415b6de493": {
+    "securityGroupId": "sg-0a885d6fce9320007",
     "allowAllOutbound": false
   },
-  "security-group:account=738452829225:region=ap-northeast-1:securityGroupName=wp-dev-sg-elb:vpcId=vpc-07035a01277e1bc30": {
-    "securityGroupId": "sg-038e7f3a4c280b172",
+  "security-group:account=738452829225:region=us-east-1:securityGroupName=wp-dev-sg-elb:vpcId=vpc-010d4e8415b6de493": {
+    "securityGroupId": "sg-0f4985bbc5138e9eb",
     "allowAllOutbound": false
   },
-  "security-group:account=738452829225:region=ap-northeast-1:securityGroupName=wp-dev-sg-ssm:vpcId=vpc-07035a01277e1bc30": {
-    "securityGroupId": "sg-09e89d7ecc820dfc8",
+  "security-group:account=738452829225:region=us-east-1:securityGroupName=wp-dev-sg-ssm:vpcId=vpc-010d4e8415b6de493": {
+    "securityGroupId": "sg-0196dbb3dce3fc233",
     "allowAllOutbound": false
   }
 }

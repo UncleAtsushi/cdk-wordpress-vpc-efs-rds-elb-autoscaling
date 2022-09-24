@@ -9,7 +9,7 @@
         "path": "Tree",
         "constructInfo": {
           "fqn": "constructs.Construct",
-          "version": "10.1.68"
+          "version": "10.1.58"
         }
       },
       "Network": {
@@ -56,7 +56,7 @@
                         "vpcId": {
                           "Ref": "Vpc8378EB38"
                         },
-                        "availabilityZone": "ap-northeast-1a",
+                        "availabilityZone": "us-east-1a",
                         "cidrBlock": "10.0.0.0/24",
                         "mapPublicIpOnLaunch": true,
                         "tags": [
@@ -216,7 +216,7 @@
                         "vpcId": {
                           "Ref": "Vpc8378EB38"
                         },
-                        "availabilityZone": "ap-northeast-1c",
+                        "availabilityZone": "us-east-1b",
                         "cidrBlock": "10.0.1.0/24",
                         "mapPublicIpOnLaunch": true,
                         "tags": [
@@ -328,7 +328,7 @@
                         "vpcId": {
                           "Ref": "Vpc8378EB38"
                         },
-                        "availabilityZone": "ap-northeast-1a",
+                        "availabilityZone": "us-east-1a",
                         "cidrBlock": "10.0.2.0/24",
                         "mapPublicIpOnLaunch": false,
                         "tags": [
@@ -440,7 +440,7 @@
                         "vpcId": {
                           "Ref": "Vpc8378EB38"
                         },
-                        "availabilityZone": "ap-northeast-1c",
+                        "availabilityZone": "us-east-1b",
                         "cidrBlock": "10.0.3.0/24",
                         "mapPublicIpOnLaunch": false,
                         "tags": [
@@ -552,7 +552,7 @@
                         "vpcId": {
                           "Ref": "Vpc8378EB38"
                         },
-                        "availabilityZone": "ap-northeast-1a",
+                        "availabilityZone": "us-east-1a",
                         "cidrBlock": "10.0.4.0/24",
                         "mapPublicIpOnLaunch": false,
                         "tags": [
@@ -644,7 +644,7 @@
                         "vpcId": {
                           "Ref": "Vpc8378EB38"
                         },
-                        "availabilityZone": "ap-northeast-1c",
+                        "availabilityZone": "us-east-1b",
                         "cidrBlock": "10.0.5.0/24",
                         "mapPublicIpOnLaunch": false,
                         "tags": [
@@ -990,7 +990,7 @@
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
                   "aws:cdk:cloudformation:props": {
-                    "serviceName": "com.amazonaws.ap-northeast-1.ssm",
+                    "serviceName": "com.amazonaws.us-east-1.ssm",
                     "vpcId": {
                       "Ref": "Vpc8378EB38"
                     },
@@ -1035,7 +1035,7 @@
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
                   "aws:cdk:cloudformation:props": {
-                    "serviceName": "com.amazonaws.ap-northeast-1.ssmmessages",
+                    "serviceName": "com.amazonaws.us-east-1.ssmmessages",
                     "vpcId": {
                       "Ref": "Vpc8378EB38"
                     },
@@ -1080,7 +1080,7 @@
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::VPCEndpoint",
                   "aws:cdk:cloudformation:props": {
-                    "serviceName": "com.amazonaws.ap-northeast-1.ec2messages",
+                    "serviceName": "com.amazonaws.us-east-1.ec2messages",
                     "vpcId": {
                       "Ref": "Vpc8378EB38"
                     },
@@ -1217,7 +1217,7 @@
             },
             "constructInfo": {
               "fqn": "constructs.Construct",
-              "version": "10.1.68"
+              "version": "10.1.58"
             }
           }
         },
@@ -1301,8 +1301,8 @@
                     "ipProtocol": "tcp",
                     "description": "from StorageSgEC2228F302E:2049",
                     "fromPort": 2049,
-                    "groupId": "sg-048b29406f39e7f78",
-                    "sourceSecurityGroupId": "sg-0397d46dfc77fc730",
+                    "groupId": "sg-0100ec1c821168686",
+                    "sourceSecurityGroupId": "sg-041bd4b7422599430",
                     "toPort": 2049
                   }
                 },
@@ -1327,10 +1327,10 @@
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupEgress",
                   "aws:cdk:cloudformation:props": {
-                    "groupId": "sg-0397d46dfc77fc730",
+                    "groupId": "sg-041bd4b7422599430",
                     "ipProtocol": "tcp",
                     "description": "to StorageSgEFSB1AED6F9:2049",
-                    "destinationSecurityGroupId": "sg-048b29406f39e7f78",
+                    "destinationSecurityGroupId": "sg-0100ec1c821168686",
                     "fromPort": 2049,
                     "toPort": 2049
                   }
@@ -1380,9 +1380,9 @@
                       "Ref": "Efs9E8BF36B"
                     },
                     "securityGroups": [
-                      "sg-048b29406f39e7f78"
+                      "sg-0100ec1c821168686"
                     ],
-                    "subnetId": "subnet-060fb6a70225f77de"
+                    "subnetId": "subnet-064acf5159d13b7ac"
                   }
                 },
                 "constructInfo": {
@@ -1400,9 +1400,9 @@
                       "Ref": "Efs9E8BF36B"
                     },
                     "securityGroups": [
-                      "sg-048b29406f39e7f78"
+                      "sg-0100ec1c821168686"
                     ],
-                    "subnetId": "subnet-0073d482687777b0b"
+                    "subnetId": "subnet-0dfd4aba470c0ae8f"
                   }
                 },
                 "constructInfo": {
@@ -1431,7 +1431,7 @@
             },
             "constructInfo": {
               "fqn": "constructs.Construct",
-              "version": "10.1.68"
+              "version": "10.1.58"
             }
           }
         },
@@ -1512,10 +1512,10 @@
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupEgress",
                   "aws:cdk:cloudformation:props": {
-                    "groupId": "sg-0397d46dfc77fc730",
+                    "groupId": "sg-041bd4b7422599430",
                     "ipProtocol": "tcp",
                     "description": "to DatabaseSgRDS96DCD113:3306",
-                    "destinationSecurityGroupId": "sg-0bb22889590c8e525",
+                    "destinationSecurityGroupId": "sg-0a885d6fce9320007",
                     "fromPort": 3306,
                     "toPort": 3306
                   }
@@ -1544,8 +1544,8 @@
                     "ipProtocol": "tcp",
                     "description": "from DatabaseSgEC245F6D6D9:3306",
                     "fromPort": 3306,
-                    "groupId": "sg-0bb22889590c8e525",
-                    "sourceSecurityGroupId": "sg-0397d46dfc77fc730",
+                    "groupId": "sg-0a885d6fce9320007",
+                    "sourceSecurityGroupId": "sg-041bd4b7422599430",
                     "toPort": 3306
                   }
                 },
@@ -1572,8 +1572,8 @@
                   "aws:cdk:cloudformation:props": {
                     "dbSubnetGroupDescription": "Subnet Group for RDS",
                     "subnetIds": [
-                      "subnet-0bfeaa078691b110d",
-                      "subnet-0163bd0fa57b7b547"
+                      "subnet-0d0236bbe9cf9bf2b",
+                      "subnet-05a5039b4a6c4f861"
                     ],
                     "dbSubnetGroupName": "wp-dev-dbsubnet"
                   }
@@ -1711,7 +1711,7 @@
                     "publiclyAccessible": false,
                     "storageType": "gp2",
                     "vpcSecurityGroups": [
-                      "sg-0bb22889590c8e525"
+                      "sg-0a885d6fce9320007"
                     ]
                   }
                 },
@@ -1741,7 +1741,7 @@
             },
             "constructInfo": {
               "fqn": "constructs.Construct",
-              "version": "10.1.68"
+              "version": "10.1.58"
             }
           }
         },
@@ -1825,8 +1825,8 @@
                     "ipProtocol": "tcp",
                     "description": "Load balancer to target",
                     "fromPort": 80,
-                    "groupId": "sg-0397d46dfc77fc730",
-                    "sourceSecurityGroupId": "sg-038e7f3a4c280b172",
+                    "groupId": "sg-041bd4b7422599430",
+                    "sourceSecurityGroupId": "sg-0f4985bbc5138e9eb",
                     "toPort": 80
                   }
                 },
@@ -1841,10 +1841,48 @@
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupEgress",
                   "aws:cdk:cloudformation:props": {
-                    "groupId": "sg-0397d46dfc77fc730",
+                    "groupId": "sg-041bd4b7422599430",
                     "ipProtocol": "tcp",
                     "description": "to ComputingSgSSMCD5053DB:443",
-                    "destinationSecurityGroupId": "sg-09e89d7ecc820dfc8",
+                    "destinationSecurityGroupId": "sg-0196dbb3dce3fc233",
+                    "fromPort": 443,
+                    "toPort": 443
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroupEgress",
+                  "version": "2.28.1"
+                }
+              },
+              "to 0.0.0.0_0:80": {
+                "id": "to 0.0.0.0_0:80",
+                "path": "Computing/SgEC2/to 0.0.0.0_0:80",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupEgress",
+                  "aws:cdk:cloudformation:props": {
+                    "groupId": "sg-041bd4b7422599430",
+                    "ipProtocol": "tcp",
+                    "cidrIp": "0.0.0.0/0",
+                    "description": "to 0.0.0.0/0:80",
+                    "fromPort": 80,
+                    "toPort": 80
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_ec2.CfnSecurityGroupEgress",
+                  "version": "2.28.1"
+                }
+              },
+              "to 0.0.0.0_0:443": {
+                "id": "to 0.0.0.0_0:443",
+                "path": "Computing/SgEC2/to 0.0.0.0_0:443",
+                "attributes": {
+                  "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupEgress",
+                  "aws:cdk:cloudformation:props": {
+                    "groupId": "sg-041bd4b7422599430",
+                    "ipProtocol": "tcp",
+                    "cidrIp": "0.0.0.0/0",
+                    "description": "to 0.0.0.0/0:443",
                     "fromPort": 443,
                     "toPort": 443
                   }
@@ -1886,10 +1924,10 @@
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::EC2::SecurityGroupEgress",
                   "aws:cdk:cloudformation:props": {
-                    "groupId": "sg-038e7f3a4c280b172",
+                    "groupId": "sg-0f4985bbc5138e9eb",
                     "ipProtocol": "tcp",
                     "description": "Load balancer to target",
-                    "destinationSecurityGroupId": "sg-0397d46dfc77fc730",
+                    "destinationSecurityGroupId": "sg-041bd4b7422599430",
                     "fromPort": 80,
                     "toPort": 80
                   }
@@ -1909,7 +1947,7 @@
                     "cidrIp": "0.0.0.0/0",
                     "description": "Allow from anyone on port 80",
                     "fromPort": 80,
-                    "groupId": "sg-038e7f3a4c280b172",
+                    "groupId": "sg-0f4985bbc5138e9eb",
                     "toPort": 80
                   }
                 },
@@ -1937,8 +1975,8 @@
                     "ipProtocol": "tcp",
                     "description": "from ComputingSgEC2C5E1CD63:443",
                     "fromPort": 443,
-                    "groupId": "sg-09e89d7ecc820dfc8",
-                    "sourceSecurityGroupId": "sg-0397d46dfc77fc730",
+                    "groupId": "sg-0196dbb3dce3fc233",
+                    "sourceSecurityGroupId": "sg-041bd4b7422599430",
                     "toPort": 443
                   }
                 },
@@ -1956,8 +1994,102 @@
           "RoleEC2": {
             "id": "RoleEC2",
             "path": "Computing/RoleEC2",
+            "children": {
+              "Policy": {
+                "id": "Policy",
+                "path": "Computing/RoleEC2/Policy",
+                "children": {
+                  "Resource": {
+                    "id": "Resource",
+                    "path": "Computing/RoleEC2/Policy/Resource",
+                    "attributes": {
+                      "aws:cdk:cloudformation:type": "AWS::IAM::Policy",
+                      "aws:cdk:cloudformation:props": {
+                        "policyDocument": {
+                          "Statement": [
+                            {
+                              "Action": [
+                                "s3:GetBucket*",
+                                "s3:GetObject*",
+                                "s3:List*"
+                              ],
+                              "Effect": "Allow",
+                              "Resource": [
+                                {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":s3:::cdk-hnb659fds-assets-738452829225-us-east-1"
+                                    ]
+                                  ]
+                                },
+                                {
+                                  "Fn::Join": [
+                                    "",
+                                    [
+                                      "arn:",
+                                      {
+                                        "Ref": "AWS::Partition"
+                                      },
+                                      ":s3:::cdk-hnb659fds-assets-738452829225-us-east-1/*"
+                                    ]
+                                  ]
+                                }
+                              ]
+                            }
+                          ],
+                          "Version": "2012-10-17"
+                        },
+                        "policyName": "RoleEC2PolicyA207CE06",
+                        "roles": [
+                          "wp-dev-role-ec2"
+                        ]
+                      }
+                    },
+                    "constructInfo": {
+                      "fqn": "aws-cdk-lib.aws_iam.CfnPolicy",
+                      "version": "2.28.1"
+                    }
+                  }
+                },
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_iam.Policy",
+                  "version": "2.28.1"
+                }
+              }
+            },
             "constructInfo": {
               "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
+          "Asset": {
+            "id": "Asset",
+            "path": "Computing/Asset",
+            "children": {
+              "Stage": {
+                "id": "Stage",
+                "path": "Computing/Asset/Stage",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.AssetStaging",
+                  "version": "2.28.1"
+                }
+              },
+              "AssetBucket": {
+                "id": "AssetBucket",
+                "path": "Computing/Asset/AssetBucket",
+                "constructInfo": {
+                  "fqn": "aws-cdk-lib.aws_s3.BucketBase",
+                  "version": "2.28.1"
+                }
+              }
+            },
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.aws_s3_assets.Asset",
               "version": "2.28.1"
             }
           },
@@ -1996,11 +2128,13 @@
                           ]
                         }
                       },
-                      "imageId": "ami-08afe855132f68423",
+                      "imageId": {
+                        "Ref": "SsmParameterValueawsserviceamiamazonlinuxlatestamzn2amihvmx8664gp2C96584B6F00A464EAD1953AFF4B05118Parameter"
+                      },
                       "instanceType": "t2.micro",
                       "instanceInitiatedShutdownBehavior": "terminate",
                       "securityGroupIds": [
-                        "sg-0397d46dfc77fc730"
+                        "sg-041bd4b7422599430"
                       ],
                       "tagSpecifications": [
                         {
@@ -2021,7 +2155,10 @@
                             }
                           ]
                         }
-                      ]
+                      ],
+                      "userData": {
+                        "Fn::Base64": "#!/bin/bash\nmkdir -p $(dirname '/tmp/0e2b51880d9731a2c5b4b4c591a4f5151484496fc46239e7c793b6f52d4b69c9.sh')\naws s3 cp 's3://cdk-hnb659fds-assets-738452829225-us-east-1/0e2b51880d9731a2c5b4b4c591a4f5151484496fc46239e7c793b6f52d4b69c9.sh' '/tmp/0e2b51880d9731a2c5b4b4c591a4f5151484496fc46239e7c793b6f52d4b69c9.sh' --region us-east-1\nset -e\nchmod +x '/tmp/0e2b51880d9731a2c5b4b4c591a4f5151484496fc46239e7c793b6f52d4b69c9.sh'\n'/tmp/0e2b51880d9731a2c5b4b4c591a4f5151484496fc46239e7c793b6f52d4b69c9.sh'"
+                      }
                     },
                     "launchTemplateName": "wp-dev-lt"
                   }
@@ -2037,6 +2174,22 @@
               "version": "2.28.1"
             }
           },
+          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter": {
+            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
+            "path": "Computing/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118.Parameter",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.CfnParameter",
+              "version": "2.28.1"
+            }
+          },
+          "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118": {
+            "id": "SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118",
+            "path": "Computing/SsmParameterValue:--aws--service--ami-amazon-linux-latest--amzn2-ami-hvm-x86_64-gp2:C96584B6-F00A-464E-AD19-53AFF4B05118",
+            "constructInfo": {
+              "fqn": "aws-cdk-lib.Resource",
+              "version": "2.28.1"
+            }
+          },
           "Asg": {
             "id": "Asg",
             "path": "Computing/Asg",
@@ -2047,10 +2200,10 @@
                 "attributes": {
                   "aws:cdk:cloudformation:type": "AWS::AutoScaling::AutoScalingGroup",
                   "aws:cdk:cloudformation:props": {
-                    "maxSize": "4",
-                    "minSize": "2",
+                    "maxSize": "1",
+                    "minSize": "1",
                     "autoScalingGroupName": "wp-dev-asg",
-                    "desiredCapacity": "2",
+                    "desiredCapacity": "1",
                     "healthCheckGracePeriod": 30,
                     "healthCheckType": "ELB",
                     "launchTemplate": {
@@ -2070,8 +2223,8 @@
                       }
                     ],
                     "vpcZoneIdentifier": [
-                      "subnet-060fb6a70225f77de",
-                      "subnet-0073d482687777b0b"
+                      "subnet-064acf5159d13b7ac",
+                      "subnet-0dfd4aba470c0ae8f"
                     ]
                   }
                 },
@@ -2110,11 +2263,11 @@
                     "name": "wp-dev-alb",
                     "scheme": "internet-facing",
                     "securityGroups": [
-                      "sg-038e7f3a4c280b172"
+                      "sg-0f4985bbc5138e9eb"
                     ],
                     "subnets": [
-                      "subnet-0ea4e44b419e04813",
-                      "subnet-04aeacdb6e14474c4"
+                      "subnet-0f4c56dd01e1487bb",
+                      "subnet-065a602d0fcbb71ad"
                     ],
                     "type": "application"
                   }
@@ -2192,7 +2345,7 @@
                     ],
                     "targetType": "instance",
                     "unhealthyThresholdCount": 5,
-                    "vpcId": "vpc-07035a01277e1bc30"
+                    "vpcId": "vpc-010d4e8415b6de493"
                   }
                 },
                 "constructInfo": {
@@ -2221,7 +2374,7 @@
             },
             "constructInfo": {
               "fqn": "constructs.Construct",
-              "version": "10.1.68"
+              "version": "10.1.58"
             }
           }
         },

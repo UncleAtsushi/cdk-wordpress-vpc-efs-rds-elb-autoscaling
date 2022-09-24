@@ -30,7 +30,7 @@ class StorageStack(Stack):
             vpc=wp_vpc,
             security_group_name="wp-dev-sg-ec2"
         )
-
+        
 
         ###############################################
         ############### Storage Section ###############

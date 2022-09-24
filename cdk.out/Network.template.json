@@ -24,7 +24,7 @@
     "VpcId": {
      "Ref": "Vpc8378EB38"
     },
-    "AvailabilityZone": "ap-northeast-1a",
+    "AvailabilityZone": "us-east-1a",
     "CidrBlock": "10.0.0.0/24",
     "MapPublicIpOnLaunch": true,
     "Tags": [
@@ -139,7 +139,7 @@
     "VpcId": {
      "Ref": "Vpc8378EB38"
     },
-    "AvailabilityZone": "ap-northeast-1c",
+    "AvailabilityZone": "us-east-1b",
     "CidrBlock": "10.0.1.0/24",
     "MapPublicIpOnLaunch": true,
     "Tags": [
@@ -216,7 +216,7 @@
     "VpcId": {
      "Ref": "Vpc8378EB38"
     },
-    "AvailabilityZone": "ap-northeast-1a",
+    "AvailabilityZone": "us-east-1a",
     "CidrBlock": "10.0.2.0/24",
     "MapPublicIpOnLaunch": false,
     "Tags": [
@@ -290,7 +290,7 @@
     "VpcId": {
      "Ref": "Vpc8378EB38"
     },
-    "AvailabilityZone": "ap-northeast-1c",
+    "AvailabilityZone": "us-east-1b",
     "CidrBlock": "10.0.3.0/24",
     "MapPublicIpOnLaunch": false,
     "Tags": [
@@ -364,7 +364,7 @@
     "VpcId": {
      "Ref": "Vpc8378EB38"
     },
-    "AvailabilityZone": "ap-northeast-1a",
+    "AvailabilityZone": "us-east-1a",
     "CidrBlock": "10.0.4.0/24",
     "MapPublicIpOnLaunch": false,
     "Tags": [
@@ -423,7 +423,7 @@
     "VpcId": {
      "Ref": "Vpc8378EB38"
     },
-    "AvailabilityZone": "ap-northeast-1c",
+    "AvailabilityZone": "us-east-1b",
     "CidrBlock": "10.0.5.0/24",
     "MapPublicIpOnLaunch": false,
     "Tags": [
@@ -645,7 +645,7 @@
   "SSMEndpointE3B50236": {
    "Type": "AWS::EC2::VPCEndpoint",
    "Properties": {
-    "ServiceName": "com.amazonaws.ap-northeast-1.ssm",
+    "ServiceName": "com.amazonaws.us-east-1.ssm",
     "VpcId": {
      "Ref": "Vpc8378EB38"
     },
@@ -675,7 +675,7 @@
   "SSMMESSAGESEndpointBAE2E525": {
    "Type": "AWS::EC2::VPCEndpoint",
    "Properties": {
-    "ServiceName": "com.amazonaws.ap-northeast-1.ssmmessages",
+    "ServiceName": "com.amazonaws.us-east-1.ssmmessages",
     "VpcId": {
      "Ref": "Vpc8378EB38"
     },
@@ -705,7 +705,7 @@
   "EC2MESSAGESEndpointBCFB5CC6": {
    "Type": "AWS::EC2::VPCEndpoint",
    "Properties": {
-    "ServiceName": "com.amazonaws.ap-northeast-1.ec2messages",
+    "ServiceName": "com.amazonaws.us-east-1.ec2messages",
     "VpcId": {
      "Ref": "Vpc8378EB38"
     },

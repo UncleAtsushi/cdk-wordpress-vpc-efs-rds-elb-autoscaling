@@ -4,10 +4,11 @@ from aws_cdk import (
     aws_ec2 as ec2,
     aws_elasticloadbalancingv2 as elbv2,
     aws_autoscaling as autoscaling,
-    aws_iam as iam
+    aws_iam as iam,
 )
 from constructs import Construct
 import aws_cdk as cdk
+from aws_cdk.aws_s3_assets import Asset
 
 class ComputingStack(Stack):
 
@@ -61,61 +62,13 @@ class ComputingStack(Stack):
         ##############################################
         ############### Server Section ###############
         ##############################################
-        # Parameters fro User Data
-        wordpress_sitename = "TestBlog" # Web Site Name for WordPress
-        wordpress_username = "wpuser" # Admin User Name for WordPress
-        wordpress_password = "Ledger2008122" # Admin Password for WordPress
-        wordpress_email = "test@test.com" # Email Address for WordPress
-        wordpress_dbname = "wordpress" # Database Name for WordPress in MySQL
-        my_region = "ap-northeast-1"
-
-        # User Data
-        wp_userdata = ec2.UserData.for_linux()
-        wp_userdata.add_commands(
-            "WP_SITENAME={}".format(wordpress_sitename),
-            "WP_USERNAME={}".format(wordpress_username),
-            "WP_PASSWORD={}".format(wordpress_password),
-            "WP_EMAIL={}".format(wordpress_email),
-            "WP_DBNAME={}".format(wordpress_dbname),
-            "EFS_ID=`aws efs describe-file-systems --region {}" \
-                " | grep FileSystemId | cut -d':' -f2 | tr -d '\042 ,'`".format(my_region),
-            "DB_USERNAME=`aws secretsmanager get-secret-value --secret-id wp-dev-secret-rds --region {}" \
-                " | grep SecretString | cut -d'\\' -f22 | tr -d '\042'`".format(my_region),
-            "DB_PASSWORD=`aws secretsmanager get-secret-value --secret-id wp-dev-secret-rds --region {}" \
-                " | grep SecretString | cut -d'\\' -f4 | tr -d '\042'`".format(my_region),
-            "DB_HOSTNAME=`aws secretsmanager get-secret-value --secret-id wp-dev-secret-rds --region {}" \
-                " | grep SecretString | cut -d'\\' -f18 | tr -d '\042'`".format(my_region),
-            "ELB_DNSNAME=`aws elbv2 describe-load-balancers --region {}" \
-                " | grep DNSName | cut -d':' -f2 | tr -d '\042 ,'`".format(my_region),
-            "sudo yum -y remove mariadb-libs" \
-                + " && sudo yum -y update" \
-                + " && sudo yum -y install httpd" \
-                + " && sudo systemctl start httpd" \
-                + " && sudo systemctl enable httpd",
-            "sudo mkdir -p /var/www/html/" \
-                + " && sudo yum install -y amazon-efs-utils" \
-                + " && `echo \"mount -t efs -o tls $EFS_ID:/ /var/www/html\"`",
-            "sudo amazon-linux-extras install -y php8.0" \
-                + " && sudo curl -O \"https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar\"" \
-                + " && sudo chmod +x wp-cli.phar" \
-                + " && sudo mv wp-cli.phar /usr/local/bin/wp",
-            "sudo yum -y install \"https://dev.mysql.com/get/mysql80-community-release-el7-6.noarch.rpm\"" \
-                + " && sudo yum-config-manager --disable mysql80-community" \
-                + " && sudo yum-config-manager --enable mysql57-community" \
-                + " && sudo rpm --import \"https://repo.mysql.com/RPM-GPG-KEY-mysql-2022\"" \
-                + " && sudo yum -y install mysql-community-client",
-            "sudo chown apache:apache /var/www/html/" \
-                + " && sudo -u apache /usr/local/bin/wp core download --locale=ja --path=/var/www/html" \
-                + " && `echo \"sudo -u apache /usr/local/bin/wp core config" \
-                    " --dbname=$WP_DBNAME --dbuser=$DB_USERNAME --dbpass=$DB_PASSWORD --dbhost=$DB_HOSTNAME" \
-                        " --path=/var/www/html\"`" \
-                + " && sudo -u apache /usr/local/bin/wp db create --path=/var/www/html" \
-                + " && `echo \"sudo -u apache /usr/local/bin/wp core install --url=$ELB_DNSNAME --title=$WP_SITENAME" \
-                    " --admin_user=$WP_USERNAME --admin_password=$WP_PASSWORD --admin_email=$WP_EMAIL" \
-                    " --path=/var/www/html\"`",
-            "sudo echo \"${EFS_ID}:/ /var/www/html/ efs defaults,_netdev 0 0\" | sudo tee -a /etc/fstab > /dev/null",
-            "sudo systemctl restart httpd"
+        # Upload Shell Script(User Data) to s3
+        asset = Asset(self, "Asset",
+            path="Computing/User_data.sh"
         )
+
+        # Create User Data Instance
+        wp_userdata = ec2.UserData.for_linux()
 
         # Launch Template
         wp_lt = ec2.LaunchTemplate(self, "LaunchTemplate",
@@ -131,10 +84,24 @@ class ComputingStack(Stack):
             machine_image=ec2.AmazonLinuxImage(                       
                 generation=ec2.AmazonLinuxGeneration.AMAZON_LINUX_2
             )
-            # # Set the AMI from EC2 after installed WordPress            
+            # Set the AMI from EC2 after installed WordPress            
             # machine_image=ec2.MachineImage.generic_linux(
-            #     {"ap-northeast-1": "ami-XXXXXXXXXXXXXXXXX"}
+            #     {"us-east-1": "ami-XXXXXXXXXXXXXXXXXX"}
             # )
+        )
+        # Grant Read to Role of Template
+        asset.grant_read(wp_lt.role)
+
+        # Download Shell Script(User Data) to local path
+        wp_local_path = wp_userdata.add_s3_download_command(
+            bucket=asset.bucket,
+            bucket_key=asset.s3_object_key,
+            region="us-east-1"
+        )
+
+        # Add User Data to Template
+        wp_lt.user_data.add_execute_file_command(
+            file_path=wp_local_path
         )
 
         # Auto Scaling Group

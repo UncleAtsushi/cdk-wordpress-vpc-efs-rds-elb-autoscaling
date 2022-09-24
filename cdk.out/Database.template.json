@@ -3,10 +3,10 @@
   "SgEC2toDatabaseSgRDS96DCD11333066BDED3CF": {
    "Type": "AWS::EC2::SecurityGroupEgress",
    "Properties": {
-    "GroupId": "sg-0397d46dfc77fc730",
+    "GroupId": "sg-041bd4b7422599430",
     "IpProtocol": "tcp",
     "Description": "to DatabaseSgRDS96DCD113:3306",
-    "DestinationSecurityGroupId": "sg-0bb22889590c8e525",
+    "DestinationSecurityGroupId": "sg-0a885d6fce9320007",
     "FromPort": 3306,
     "ToPort": 3306
    },
@@ -20,8 +20,8 @@
     "IpProtocol": "tcp",
     "Description": "from DatabaseSgEC245F6D6D9:3306",
     "FromPort": 3306,
-    "GroupId": "sg-0bb22889590c8e525",
-    "SourceSecurityGroupId": "sg-0397d46dfc77fc730",
+    "GroupId": "sg-0a885d6fce9320007",
+    "SourceSecurityGroupId": "sg-041bd4b7422599430",
     "ToPort": 3306
    },
    "Metadata": {
@@ -33,8 +33,8 @@
    "Properties": {
     "DBSubnetGroupDescription": "Subnet Group for RDS",
     "SubnetIds": [
-     "subnet-0bfeaa078691b110d",
-     "subnet-0163bd0fa57b7b547"
+     "subnet-0d0236bbe9cf9bf2b",
+     "subnet-05a5039b4a6c4f861"
     ],
     "DBSubnetGroupName": "wp-dev-dbsubnet"
    },
@@ -131,7 +131,7 @@
     "PubliclyAccessible": false,
     "StorageType": "gp2",
     "VPCSecurityGroups": [
-     "sg-0bb22889590c8e525"
+     "sg-0a885d6fce9320007"
     ]
    },
    "UpdateReplacePolicy": "Delete",

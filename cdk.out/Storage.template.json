@@ -6,8 +6,8 @@
     "IpProtocol": "tcp",
     "Description": "from StorageSgEC2228F302E:2049",
     "FromPort": 2049,
-    "GroupId": "sg-048b29406f39e7f78",
-    "SourceSecurityGroupId": "sg-0397d46dfc77fc730",
+    "GroupId": "sg-0100ec1c821168686",
+    "SourceSecurityGroupId": "sg-041bd4b7422599430",
     "ToPort": 2049
    },
    "Metadata": {
@@ -17,10 +17,10 @@
   "SgEC2toStorageSgEFSB1AED6F9204914598ECE": {
    "Type": "AWS::EC2::SecurityGroupEgress",
    "Properties": {
-    "GroupId": "sg-0397d46dfc77fc730",
+    "GroupId": "sg-041bd4b7422599430",
     "IpProtocol": "tcp",
     "Description": "to StorageSgEFSB1AED6F9:2049",
-    "DestinationSecurityGroupId": "sg-048b29406f39e7f78",
+    "DestinationSecurityGroupId": "sg-0100ec1c821168686",
     "FromPort": 2049,
     "ToPort": 2049
    },
@@ -52,9 +52,9 @@
      "Ref": "Efs9E8BF36B"
     },
     "SecurityGroups": [
-     "sg-048b29406f39e7f78"
+     "sg-0100ec1c821168686"
     ],
-    "SubnetId": "subnet-060fb6a70225f77de"
+    "SubnetId": "subnet-064acf5159d13b7ac"
    },
    "Metadata": {
     "aws:cdk:path": "Storage/Efs/EfsMountTarget1"
@@ -67,9 +67,9 @@
      "Ref": "Efs9E8BF36B"
     },
     "SecurityGroups": [
-     "sg-048b29406f39e7f78"
+     "sg-0100ec1c821168686"
     ],
-    "SubnetId": "subnet-0073d482687777b0b"
+    "SubnetId": "subnet-0dfd4aba470c0ae8f"
    },
    "Metadata": {
     "aws:cdk:path": "Storage/Efs/EfsMountTarget2"
